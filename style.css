@@ -319,3 +319,6 @@ h2 {
 	animation: flicker 0.15s infinite;
   }
   
+  .bold {	
+	font-weight: 600;
+  }
