@@ -10,7 +10,7 @@ const getTrack = async () => {
 
     let isPlaying = json.track['@attr']?.nowplaying || false;
 
-    if(!isPlaying) {
+    if(!isPlaying) {;
         // Trigger if a song isn't playing
         return;
     } else {
