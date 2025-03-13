@@ -8,8 +8,8 @@ body {
 }
 
 .outer {
-	width: 900px;
-	height: 700px;
+	width: 1000px;
+	height: 760px;
 	border: 1px solid #FF00C5;
 	padding: 6px;
 	background-image: url('1.png');
@@ -63,7 +63,7 @@ body {
 	border: 1px solid #FF00C5;
 	display: inline-block;
 	vertical-align: top;
-	width: 540px;
+	width: 690px;
 	height: 170px;
 	background-image: url('banner.gif');
 	background-size: cover;
@@ -74,7 +74,7 @@ body {
 	border: 1px solid #FF00C5;
 	display: inline-block;
 	vertical-align: top;
-	width: 540px;
+	width: 690px;
 	height: 20px;
 	background: #FFF;
 	margin-top: 6px;
@@ -150,8 +150,8 @@ body {
 	border: 1px solid #FF00C5;
 	display: inline-block;
 	vertical-align: top;
-	width: 500px;
-	height: 490px;
+	width: 600px;
+	height: 550px;
 	background: #FFF;
 }
 
@@ -176,11 +176,17 @@ body {
 }
 
 .avatar {
-	border: 1px solid #FF00C5;
-	width: 170px;
-	height: 170px;
-	margin-bottom: 12px;
-	background-image: url('avvy.png')
+    border: 1px solid #FF00C5;
+    width: 170px;
+    height: 170px;
+    margin-bottom: 12px;
+    background-image: url('avvy.png');
+    background-size: cover; /* Assure que l'image couvre toute la div */
+    background-position: center;
+}
+
+.avatar:hover {
+    background-image: url('avvy2.png');
 }
 
 .likes {
@@ -253,9 +259,6 @@ h2 {
 	letter-spacing: 2px;
 	padding: 3px;
 }
-
-
-
 
 
 
