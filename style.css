@@ -106,6 +106,8 @@ body {
 	background-image: url('4.png');
 }
 
+
+
 .friends {
 	display: inline-block;
 	vertical-align: top;
@@ -235,6 +237,8 @@ body {
 	left: -1px;
 	top: -1px;
 }
+
+
 
 img {
 	max-width: 100%;
