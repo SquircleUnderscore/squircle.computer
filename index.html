@@ -347,6 +347,35 @@
 			</div>
 		</div>
 	</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
+
+  <script>
+    const popup = new Popup({
+      id: "Disclamer",
+      title: "Disclamer",
+      content: `
+          1. SQUIRCLE.COMPUTER doesn’t work well on {shadow}[Mobile].
+          2. SQUIRCLE.COMPUTER doesn’t work well on {shadow}[Fierfox].
+          3. SQUIRCLE.COMPUTER doesn’t have accessibility options and may be hard to read for some users.
+          `,
+      backgroundColor: "#FFF",
+      titleColor: "#FF00C5",
+      textColor: "#FF00C5",
+      closeColor: "#FF00C5",
+      borderWidth: ".2em",
+      borderColor: "#FF00C5",
+      linkColor: "#FF00C5",
+      fontSizeMultiplier: 1.2,
+      titleMargin: "4%",
+      underlineLinks: true,
+      borderRadius: "0px",
+      showImmediately: true
+  });
+  </script>
+
+
 	<script type="text/javascript">
 		function Marquee(selector, speed) {
 			const parentSelector = document.querySelector(selector);
@@ -385,31 +414,7 @@ href="https://webneko.net">Neko</a></h1>
 
 <script src="/script/lastfm.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
 
-<script>
-  const popup = new Popup({
-    id: "Disclamer",
-    title: "Disclamer",
-    content: `
-        1. SQUIRCLE.COMPUTER doesn’t work well on {shadow}[Mobile].
-        2. SQUIRCLE.COMPUTER doesn’t work well on {shadow}[Fierfox].
-        3. SQUIRCLE.COMPUTER doesn’t have accessibility options and may be hard to read for some users.
-        `,
-    backgroundColor: "#FFF",
-    titleColor: "#FF00C5",
-    textColor: "#FF00C5",
-    closeColor: "#FF00C5",
-    borderWidth: ".2em",
-    borderColor: "#FF00C5",
-    linkColor: "#FF00C5",
-    fontSizeMultiplier: 1.2,
-    titleMargin: "4%",
-    underlineLinks: true,
-    borderRadius: "0px",
-    showImmediately: true
-});
-</script>
 
 </body>
 </html>
