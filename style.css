@@ -1,12 +1,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 body {
-	font-family: Verdana, sans-serif;
-	font-size: 12px;
+	font-family: basiic;
+	src: url(basiic.ttf);
+	font-size: 14px;
 	margin: 0;
-	padding: 6px;
+	padding: 12px;
 }
 
+@font-face {
+	font-family: basiic;
+	src: url(basiic.ttf);
+  }
 .outer {
 	width: 1000px;
 	height: 999px;
@@ -143,6 +148,11 @@ body {
 	border-bottom: 2px dotted #FFF;
 }
 
+.counter-wrapper {
+    text-align: center; /* pour centrer tout ce qui est généré */
+    display: block;
+  }
+
 .small {
 	display: inline-block;
 	vertical-align: top;
@@ -239,7 +249,10 @@ body {
 	top: -1px;
 }
 
-
+.pp {
+	float: left;
+	margin: 3px;
+}
 
 img {
 	max-width: 100%;
