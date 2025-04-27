@@ -32,6 +32,8 @@
 </head>
 <body>
     <h1>DRAWBOX</h1>
+    <br>
+    <section class="drawbox">
     <canvas id="drawboxcanvas" width="500" height="500"></canvas>
     <br>
     <div onclick="change_color(this)" style="background:red" class="stroke-color"></div>
@@ -39,11 +41,14 @@
     
     <button onclick="Restore()">Undo</button>
     <button onclick="Clear()">Clear</button>
-    
-    <input type="color" oninput="stroke_color = this.value">
+
     <input type="range" min="1" max="100" oninput="stroke_width = this.value">
-    
+    <input type="color" oninput="stroke_color = this.value">
+</section>
+<section class="drawbox">
+    <br>
     <button id="submit">Submit drawing</button>
+</section>
     <p id="status"></p>
 
 	
