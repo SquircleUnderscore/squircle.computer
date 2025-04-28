@@ -251,7 +251,8 @@ body {
 
 .pp {
 	float: left;
-	margin: 3px;
+	padding-top: 5px;
+    padding-left: 0px;
 }
 
 img {
@@ -284,6 +285,16 @@ h2 {
     text-align: center;
 }
 
+
+a, nav a {
+   
+    display: inline-block; 
+    transition: transform 0.3s ease;
+  }
+  
+  a:hover, nav a:hover {
+    transform: translateY(-1.5px);
+  }
 
 
 .crt::before {
