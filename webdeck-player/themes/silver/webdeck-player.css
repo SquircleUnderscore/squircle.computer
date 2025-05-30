@@ -226,8 +226,8 @@ input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
 
 /* Player info */
 #info-screen{
-    background: radial-gradient(circle, rgb(89, 187, 248) 0%, rgb(56, 136, 248) 70%);
-    color: #0a3765;
+    background: radial-gradient(circle, #FF00C5 0%, #fa68d8 70%);
+    color: #8d006c;
     border: solid 1px dimgray;
     border-radius: 5px;
     box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.75), 0px -1px 0px 0px rgba(0, 0, 0, 0.75);
@@ -238,14 +238,14 @@ input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
 }
 
 #songLabel{
-    background: #0a3765;
+    background: #ff5ed9;
     border-radius: 3px;
-    color: #3888f8;
+    color: #FF00C5;
 }
 
 #statusLabel{
     margin: 2px 0;
-    border-top: 1.5px dotted #0a3765;
+    border-top: 1.5px dotted #FF00C5;
     line-height: 0.9em;
 }
 
