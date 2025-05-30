@@ -339,3 +339,16 @@ input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
     max-width: 175px;
     text-overflow: ellipsis;
 }
+
+#playlist{
+    border-radius: 20px;
+    height: 30px;
+    min-width: 30px;
+    font-size: large;
+}
+
+
+
+.prout{
+    display: none;
+}
