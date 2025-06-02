@@ -73,7 +73,7 @@
     background-color: white;
     color: #FF00C5;
     border: 1px solid #FF00C5;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 #c_widget button:hover, #c_widget input[type=submit]:hover {
     background-color: #FB96D8;
@@ -92,17 +92,15 @@
     padding: 10px;
     text-transform: lowercase;
     background-color: rgba(255, 255, 255, .8);
-    border: 1px dashed #FF00C5;
-    border-radius: 5px;
+    border: 1px solid #FF00C5;
+    border-radius: 0px;
 }
 #c_container {margin-top: 10px;}
 
 #c_widgetTitle {
     margin: 0;
     padding: 0;
-    font-style: italic;
-    text-decoration: underline;
-}
+    font-weight: bold;}
 
 .c-inputWrapper {
     display: block;
@@ -112,7 +110,7 @@
 .c-input {
     padding: 4px;
     color: #5E2C49;
-    border-radius: 4px;
+    border-radius: 0px;
     border: 1px solid #FF00C5;
 	outline: none;
 }
@@ -132,16 +130,16 @@
     margin-bottom: 10px;
     padding: 10px;
     background-color: rgba(255, 255, 255, .75);
-    border: 1px dashed #FF00C5;
-    border-radius: 4px;
+    border: 1px solid #FF00C5;
+    border-radius: 0px;
 }
 .c-reply {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 1);
-    border: 1px dashed #FF00C5;
-    border-radius: 4px;
+    border: 1px solid #FF00C5;
+    border-radius: 0px;
 }
 .c-reply:last-child {margin-bottom: 0;}
 
