@@ -283,6 +283,28 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 
+<style>
+body:before {
+	content: " ";
+	height: 100vh;
+	width: 100vw;
+	display: block;
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	z-index: 20;
+	background-image: url('https://tenor.com/fr/view/shinji-ikari-shinji-evangelion-grazie-thank-you-gif-1345782738145151601.gif');
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-position:center;
+	animation: yourAnimation 2400ms ease 0s 1 normal forwards;
+	pointer-events: none;
+
+}
+
+@keyframes yourAnimation { 0.0%{ opacity: 1;} 75%{ opacity: 1; } 100%{ opacity: 0;} } 
+
+</style>
 
 
 </head>
@@ -421,7 +443,6 @@
 <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
 
 <script src="fslightbox.js"></script>
-
 
 
 
