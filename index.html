@@ -341,9 +341,11 @@ body:before {
           <p style="font-size: 15px; text-align: center" >I’m currently listening to:</p>
           
           <table>
-            <td style="width: 100%; border: none; text-align: center;">
-              <iframe src="https://6klabs.com/widget/spotify/542b99630d588aa0a4775581f12d5b5c4492f0d13675bf13af9a6733dc3b2ede" width=100% height=20% style="border:none"></iframe>
-            </td>
+<div class="infoBox" id="listening">
+          <div id="listeningStatus">
+            <div id="blob" style="background-color: rgb(255, 97, 97)"></div>
+            <p id="trackStatus">Listening to:</p>
+          </div>
           </table>
         </hr>
           <p style="font-size: 7px; text-align: center" >If nothing shows up, I’m probably sleeping xD</p>
@@ -443,7 +445,45 @@ body:before {
 
 <script src="fslightbox.js"></script>
 
+<script>
 
+// this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+const USERNAME = "polosteor"; // Put your LastFM username here
+const BASE_URL = `https://lastfm-last-played.biancarosa.com.br/${USERNAME}/latest-song`;
+
+const getTrack = async () => {
+    const request = await fetch(BASE_URL);
+    const json = await request.json();
+    let status
+
+    let isPlaying = json.track['@attr']?.nowplaying || false;
+
+    if(!isPlaying) {
+        // Trigger if a song isn't playing
+        return;
+    } else {
+        // Trigger if a song is playing
+    }
+
+    // Values:
+    // COVER IMAGE: json.track.image[1]['#text']
+    // TITLE: json.track.name
+    // ARTIST: json.track.artist['#text']
+
+    document.getElementById("listening").innerHTML = `
+    <img src="${json.track.image[1]['#text']}">
+    <div id="trackInfo">
+    <h3 id="trackName">${json.track.name}</h3>
+    <p id="artistName">${json.track.artist['#text']}</p>
+    </div>
+    `
+};
+
+getTrack();
+setInterval(() => { getTrack(); }, 10000);
+
+</script> 
 
 
 
