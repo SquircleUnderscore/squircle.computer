@@ -298,6 +298,53 @@ a, nav a {
   }
 
 
+
+
+
+
+
+
+
+#listening {
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+#listening p{
+
+    font-size: 14px;
+    margin: 0px;
+}
+
+#listening h3{
+
+    font-size: 18px;
+    margin: 0px;
+}
+
+
+#listening img {
+    width: 90px; 
+    height: 90px;
+    border-radius: 5px;
+}
+
+#listening a img {
+    transition: transform 0.2s ease;
+}
+
+#listening a:hover img {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+
+
+
+
+  
 .crt::before {
 	content: " ";
 	display: block;
