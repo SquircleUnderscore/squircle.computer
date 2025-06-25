@@ -78,18 +78,21 @@
     <h1>Submitted Drawings ☻</h1>
     <div id="gallery">Loading images...</div>
     
-    <script>
-document.querySelector('button[aria-label="Maximize"]').addEventListener('click', function() {
-  // Créer une nouvelle fenêtre
-  const win = window.open("https://squircle.computer/05draw.html", "_blank");
 
-  // Essayer de passer la fenêtre en plein écran si possible (note : pas garanti)
-  win.focus();
-});
+
+<script>
+  document.querySelector('button[aria-label="Maximize"]').addEventListener('click', () => {
+    const elem = document.documentElement; // Cible toute la page
+
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { // Safari
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE11
+      elem.msRequestFullscreen();
+    }
+  });
 </script>
-
-<script> document.documentElement.requestFullscreen() </script>
-    <script src="drawbox.js"></script>
 
 </body>
 </html>
