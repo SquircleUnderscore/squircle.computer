@@ -11,7 +11,22 @@
 
 <style>	body {
 	background-image: url('sakura.gif');
-} </style>
+      background-attachment: fixed;
+    overflow-x: hidden;
+      animation: move-background 40s linear infinite;
+
+} 
+
+@keyframes move-background {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -255px 255px;
+    }
+}
+
+</style>
 
 <>
 
