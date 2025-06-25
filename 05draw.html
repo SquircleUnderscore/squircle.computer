@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/7.css/dist/7.scoped.css">
+
     <title>DRAWBOX</title>
     <style>
         * {box-sizing: border-box;}
@@ -27,29 +30,56 @@
             display: block;
         }
 
+
+
     </style>
 </head>
 <body>
-    <h1>DRAWBOX</h1>
+    <div class="win7">
+        <div class="window active" style="max-width: 506px; margin: 0 auto;">
+  <div class="title-bar">
+    <div class="title-bar-text">PAINT.NET</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" disabled></button>
+      <button aria-label="Maximize" ></button>
+      
+      <button aria-label="Close" disabled></button>
+    </div>
+  </div>
+</div>
+</div>
+
+    <section class="drawbox">
+
     <canvas id="drawboxcanvas" width="500" height="500"></canvas>
     <br>
     <div onclick="change_color(this)" style="background:red" class="stroke-color"></div>
     <div onclick="change_color(this)" style="background:blue" class="stroke-color"></div>
-    
+    <div class="win7">
+
     <button onclick="Restore()">Undo</button>
     <button onclick="Clear()">Clear</button>
-    
-    <input type="color" oninput="stroke_color = this.value">
+</div>
+    <div class="win7" style="max-width: 180px; margin: 0 auto;">
     <input type="range" min="1" max="100" oninput="stroke_width = this.value">
-    
-    <button id="submit">Submit drawing</button>
+        </div>
+    <input type="color" oninput="stroke_color = this.value">
+
+</section>
+<section class="drawbox">
+    <br>
+        <div class="win7">
+                <button id="submit">Submit drawing</button>
+                </div>
+
+</section>
     <p id="status"></p>
 
 	
     <h1>Submitted Drawings ☻</h1>
     <div id="gallery">Loading images...</div>
     
-    
+
     <script src="drawbox.js"></script>
 
 </body>
