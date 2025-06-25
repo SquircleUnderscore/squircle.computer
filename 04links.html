@@ -9,6 +9,17 @@
     margin: 4px 0;
     line-height: 1;
   }
+
+  img, nav img {
+   
+    display: inline-block; 
+    transition: transform 0.3s ease;
+  }
+  
+  img:hover, nav img:hover {
+    transform: translateY(-2px);
+  }
+
 </style>
 
 <script type="text/javascript">
@@ -192,7 +203,7 @@
 
 <h1>LINKS</h1>
 <p> YEHA</p>
-<H2>This section is a work in progress.</H2>
+<H2>Network</H2>
 
 
 
@@ -240,6 +251,13 @@
 </svg>
 <a href="https://github.com/SquircleUnderscore/squircle.computer" target="_blank"> Code</a> Code source of this webpage<br>
 
+<h2>Computer</h2>
+<p>A MacBook Air M2 with 16GB RAM runs in dual boot: </p>
+  <p>MacOS (using ZSH shell, Aerospace window manager, and Homebrew as package manager) </p>
+  <p>Fedora Linux Asahi Remix (using Fish shell, KDE desktop environment, and RPM as package manager).</p>
+<div href="https://files.catbox.moe/4x7yzi.png" style="text-align: center;" data-fancybox="gallery">
+  <img src="https://files.catbox.moe/4x7yzi.png" width="500" alt="Picture of my desktop">
+</div>
 
 
 <h2>Credits</h2>
@@ -263,3 +281,26 @@
 
 
 <img src="http://lemmmy.pw/osusig/sig.php?colour=hexff66aa&uname=polosteor&pp=2&countryrank&onlineindicator=undefined&xpbar" alt="OSU!" >
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+<script>
+Fancybox.bind("[data-fancybox]", {
+ Thumbs: false,
+ Toolbar: {
+    display: {
+      left: [],
+      middle: [],
+      right: [ "fullscreen", "close", ]
+    }
+  }
+});
+</script>

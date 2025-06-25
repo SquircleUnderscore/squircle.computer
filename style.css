@@ -300,8 +300,10 @@ a, nav a {
 
 
 
-
-
+	hr.lool {
+	border-top: 1px solid #FF00C5;
+	margin: 2px auto 3px;
+	}
 
 
 
