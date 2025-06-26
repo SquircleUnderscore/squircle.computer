@@ -343,7 +343,9 @@ a, nav a {
 
 
 
-
+#hover-image:hover {
+    content: url("https://files.catbox.moe/klmz4l.png");
+  }
 
 
   
