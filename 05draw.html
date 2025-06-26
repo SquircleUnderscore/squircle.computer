@@ -52,8 +52,7 @@
     <div class="title-bar-text">PAINT.NET</div>
     <div class="title-bar-controls">
       <button aria-label="Minimize" disabled></button>
-      <button aria-label="Maximize" ></button>
-      
+      <button onclick="window.open(window.location.href, '_blank')" aria-label="Maximize" ></button>
       <button aria-label="Close" disabled></button>
     </div>
   </div>
@@ -89,13 +88,7 @@
 	
     <h1>Submitted Drawings ☻</h1>
     <div id="gallery">Loading images...</div>
-    
-    <script>
-        document.querySelector('button[aria-label="Maximize"]').addEventListener('click', () => {
-            // Envoie un message au parent pour lui dire de mettre l’iframe en plein écran
-            window.parent.postMessage({ action: "maximizeIframe" }, "*");
-        });
-        </script>
+
     <script src="drawbox.js"></script>
 
 </body>
