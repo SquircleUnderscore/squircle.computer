@@ -34,8 +34,19 @@
 
     </style>
 </head>
-<body>
+
     <div class="win7">
+
+ <div role="tooltip" class="is-top is-left" style="  max-width: 127px;
+ font-size: 12px;
+ padding: 6px 10px;
+ line-height: 1.4;
+   left: 355px;
+   top: -10px; ">Open in full screen</div>
+</div>
+
+
+<div class="win7">
         <div class="window active" style="max-width: 506px; margin: 0 auto;">
   <div class="title-bar">
     <div class="title-bar-text">PAINT.NET</div>
@@ -79,7 +90,12 @@
     <h1>Submitted Drawings ☻</h1>
     <div id="gallery">Loading images...</div>
     
-
+    <script>
+        document.querySelector('button[aria-label="Maximize"]').addEventListener('click', () => {
+            // Envoie un message au parent pour lui dire de mettre l’iframe en plein écran
+            window.parent.postMessage({ action: "maximizeIframe" }, "*");
+        });
+        </script>
     <script src="drawbox.js"></script>
 
 </body>

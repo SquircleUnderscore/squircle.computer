@@ -377,7 +377,7 @@ body:before {
 		</div>
 		<div class="main">
 
-      <iframe name="content" src="01home.html" class="content"></iframe>
+      <iframe name="content" src="01home.html" class="content" allowfullscreen></iframe>
 <br><br>
       <iframe src="https://john.citrons.xyz/embed?ref=example.com" style="margin-left:auto;display:block;margin-right:auto;max-width:732px;width:100%;height:94px;border:none;"></iframe>
       
@@ -510,6 +510,23 @@ body:before {
     setInterval(() => { getTrack(); }, 10000);
 </script>
 
+<script>
+  window.addEventListener("message", (event) => {
+      // Vérifie le message
+      if (event.data.action === "maximizeIframe") {
+          const iframe = document.getElementById("myIframe");
+          if (iframe.requestFullscreen) {
+              iframe.requestFullscreen();
+          } else if (iframe.webkitRequestFullscreen) { // pour Safari
+              iframe.webkitRequestFullscreen();
+          } else if (iframe.mozRequestFullScreen) { // pour Firefox
+              iframe.mozRequestFullScreen();
+          } else if (iframe.msRequestFullscreen) { // pour IE/Edge
+              iframe.msRequestFullscreen();
+          }
+      }
+  });
+  </script>
 
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
 
