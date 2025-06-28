@@ -192,7 +192,7 @@
 
 
 </head>
-<body class="page">
+<body class="page" >
 	<h1>Hi, I am SquircleUnderscore, and welcome inside my computer. <img src="https://files.catbox.moe/7aa2r3.gif" height="13" style="vertical-align: -2px;"></a></h1>
 	<img
       class="pp"
@@ -200,8 +200,14 @@
       height="400px"
     />
 	<p>I'm building this site very slowly. It'll probably never be finished, and it's likely full of bugs and missing stuff. <br><br>
-		Hi !! My name is squircle on the internet. Welcome to the index/about page! <br> I'm a 16-year-old student from France, so English isn't my first language, sorry if anything sounds weird. <br> I started working on this website around January 2025, mostly for fun. <br> I like a bunch of random things: video games, music, keyboards and every week I get obsessed with something new.
-	</p>
+		<p>
+			Hi !! My name is squircle on the internet. Welcome to the index/about page! <br>
+			I'm a 16-year-old student from France, so English isn't my first language, sorry if anything sounds weird. <br>
+			I started working on this website around January 2025, mostly for fun. <br>
+			I like a bunch of random things:
+			<span class="tooltip">video games<span class="tooltiptext">Stardew Valley,<br> Genshin impact,<br> Minecraft, ETS2,<br> Rithm games</span></span>,
+			<span class="tooltip">music<span class="tooltiptext">I play piano and bass guitar</span></span>, keyboards and every week I get obsessed with something new.
+		  </p>	</p>
 
 
 	<H2>WHAT IM UP TO...</H2>
@@ -242,7 +248,17 @@
 
 	<script src="comment-widget.js"></script>
 
-
+	<script>
+		// With the above scripts loaded, you can call `tippy()` with a CSS
+		// selector and a `content` prop:
+		tippy('#game', {
+		  content: 'My tooltip!',
+		});
+	  </script>
+	  
+	  <script src="https://unpkg.com/@popperjs/core@2"></script>
+	  <script src="https://unpkg.com/tippy.js@6"></script>
+	  
 
 </body>
 </html>

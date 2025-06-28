@@ -326,6 +326,9 @@ body:before {
 </head>
 
 <body>
+
+
+  <div id="content">
 	<div class="outer">
 		<div class="title">
 			<div class="site-title"><span id="rainbow">SQUIRCLE.COMPUTER</span></div>
@@ -461,7 +464,16 @@ body:before {
 
 
 
+<div id="background"></div>
 
+
+</div>
+<video id="bg-video" loop>
+  <source src="https://fortyseconds.dev/images/badapple.mp4" type="video/mp4">
+</video>
+<div class="pop" style="text-align: center; margin: 0 auto; font-family: sans-serif; font-size: 15px; font-weight: bold; color: #FF00C5;">
+  <p> ↑ ↑ ↓ ↓ ← → ← → b a</p>
+</div>
 
 
 <script src="./oneko.js"></script>
@@ -549,6 +561,24 @@ body:before {
 </script>
 
 
+
+<script src="https://cdn.rawgit.com/MachinisteWeb/konami-code-js/master/src/konami-code.js"></script>
+
+
+<script>
+  const bg = document.getElementById('background');
+  const video = document.getElementById('bg-video');
+  const info = document.getElementById('info');
+  const content = document.getElementById('content');
+
+  new KonamiCode(function () {
+    bg.style.display = 'none';
+    video.style.display = 'block';
+    video.play();
+    content.classList.add('transparent');
+    info.innerText = "🎶 Bad Apple!! activé avec transparence !";
+  });
+</script>
 
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
 

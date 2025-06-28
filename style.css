@@ -347,6 +347,62 @@ hr.lool {
   animation: floating 2s ease-in-out infinite;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+
+  text-decoration: underline dotted #ff00c5;
+  text-underline-offset: 2px;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: #ff00c5;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* position au-dessus */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px) scale(0.9);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0px) scale(1);
+  }
+}
+
+video#bg-video {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
 .crt::before {
   content: " ";
   display: block;
@@ -391,6 +447,50 @@ hr.lool {
   }
   35% {
     opacity: 0.23604;
+  }
+}
+
+#content {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.5s ease; /* animation douce */
+}
+
+/* Transparence qu'on ajoute dynamiquement */
+.transparent {
+  opacity: 0.5;
+}
+
+.pop {
+  font-size: 2em;
+  color: #000;
+  text-align: center; /* looks weird often if not aligned in center */
+  -webkit-animation: pop 1s ease-in-out infinite alternate;
+  -moz-animation: pop 1s ease-in-out infinite alternate;
+  animation: pop 1s ease-in-out infinite alternate;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
+@-webkit-keyframes pop {
+  from {
+    -webkit-transform: scale(0.95);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(0.95);
   }
 }
 
