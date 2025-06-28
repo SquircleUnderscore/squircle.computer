@@ -55,8 +55,8 @@
   </head>
   <body>
     <div class="status-container">
-      <div id="presenceDot" class="presence offline" title="Offline"></div>
-      <div class="username" id="username">← status</div>
+        <div class="username" id="username">Status: ⚫️ Offline</div>
+
         <!-- dynamic lines will go here -->
       </div>
     </div>
@@ -67,12 +67,27 @@
       const usernameEl = document.getElementById("username");
             let currentIndex = 0;
 
-      function setPresence(status) {
-        presenceDot.className = "presence " + status;
-        presenceDot.title = status.charAt(0).toUpperCase() + status.slice(1);
-        usernameEl.textContent = status.toUpperCase(); // Ajoute cette ligne
+            function setPresence(status) {
+  let emoji = "⚫️"; // Default: offline
+  switch (status) {
+    case "online":
+      emoji = "🟢";
+      break;
+    case "idle":
+      emoji = "🟠";
+      break;
+    case "dnd":
+      emoji = "🔴";
+      break;
+    case "offline":
+    default:
+      emoji = "⚫️";
+      break;
+  }
 
-      }
+  usernameEl.textContent = `${emoji} ${status.toUpperCase()}`;
+}
+
       
       async function fetchStatus() {
         try {
