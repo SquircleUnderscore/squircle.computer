@@ -439,8 +439,19 @@ body:before {
         <script src="https://status.cafe/current-status.js?name=squircle" defer></script>
         <span style="display: block; height: 10px;"></span>
 
-        <marquee scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left"><img src="/cat/qb9pYzX.png"></a><img src="/cat/d7mJF4W.png"></a><img src="/cat/WFpPzZn.png"></a><img src="/cat/ExZ9JCk.png"></a><img src="/cat/jgeciGJ.png"></a><img src="/cat/vfvF2Nu.png"></a></marquee>
-			</div>
+
+
+        <div id="slideshow">
+          <img src="/cat/qb9pYzX.png" class="active">
+          <img src="/cat/d7mJF4W.png">
+          <img src="/cat/WFpPzZn.png">
+          <img src="/cat/ExZ9JCk.png">
+          <img src="/cat/jgeciGJ.png">
+          <img src="/cat/vfvF2Nu.png">
+        </div>
+
+
+      </div>
       <br>
 			<div class="likes">
 				<iframe width="190" height="190" style="border:none" src="https://dimden.neocities.org/navlink/" name="neolink"></iframe>
@@ -584,6 +595,16 @@ body:before {
   });
 </script>
 
+<script>
+  const images = document.querySelectorAll('#slideshow img');
+  let current = 0;
+
+  setInterval(() => {
+    images[current].classList.remove('active');
+    current = (current + 1) % images.length;
+    images[current].classList.add('active');
+  }, 2000); // 2000 ms = 2 secondes
+</script>
 
 
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>

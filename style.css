@@ -461,6 +461,22 @@ video#bg-video {
   opacity: 0.5;
 }
 
+#slideshow {
+  width: 300px; /* ajuste à la taille de tes images */
+  height: auto;
+  margin: auto;
+  text-align: center;
+}
+
+#slideshow img {
+  display: none;
+  max-width: 100%;
+}
+
+#slideshow img.active {
+  display: block;
+}
+
 .pop {
   font-size: 2em;
   color: #000;
