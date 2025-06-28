@@ -462,7 +462,7 @@ video#bg-video {
 }
 
 #slideshow {
-  width: 300px; /* ajuste à la taille de tes images */
+  width: 300px;
   height: auto;
   margin: auto;
   text-align: center;
@@ -472,7 +472,7 @@ video#bg-video {
 #slideshow img {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 83px; /* Décalage vers la droite */
   max-width: 100%;
   opacity: 0;
   transform: scale(1.05);
