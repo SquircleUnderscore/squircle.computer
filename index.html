@@ -373,12 +373,8 @@ body:before {
         </hr>
           <p style="font-size: 7px; text-align: center" >If nothing shows up, I’m probably sleeping xD</p>
             <marquee  scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left" style="text-align: center"><img src="https://files.catbox.moe/irhotd.gif"><img src="https://files.catbox.moe/5oxh61.gif"><img src="https://files.catbox.moe/s3brdm.gif"><img src="https://files.catbox.moe/m7w29m.jpg"><img src="https://files.catbox.moe/iyhdo6.gif"><img src="https://files.catbox.moe/8nbhet.gif"><img src="https://files.catbox.moe/up6q76.png"><img src='https://files.catbox.moe/nrt9jz.gif'><img src='https://files.catbox.moe/ekvq79.gif'><img src='https://files.catbox.moe/yr2a9b.png'><iframe src="//incr.easrng.net/badge?key=squircle" style="background: url(//incr.easrng.net/bg.gif)" title="increment badge" width="88" height="31" frameborder="0"></iframe></marquee>
-            <div class="status-container">
-              <div id="presenceDot" class="presence offline" title="Offline"></div>
-              <div class="username" id="username">SquircleUnderscore</div>
+            <iframe src="./lanyard.html" frameborder="0"  width="200" height="30" style="border:none"></iframe>
 
-                <!-- dynamic lines will go here -->
-              </div>
             </div>
             <iframe width="200" height="200" style="border:none" src="https://rubybulbs.net/neko.html"></iframe>
 
@@ -550,85 +546,6 @@ body:before {
 
     getTrack();
     setInterval(() => { getTrack(); }, 10000);
-</script>
-
-
-<script>
-  const userId = '871735378837667880';
-  const lanyardUrl = `https://api.lanyard.rest/v1/users/${userId}`;
-  const presenceDot = document.getElementById('presenceDot');
-  const usernameEl = document.getElementById('username');
-  const detailsEl = document.getElementById('details');
-  let detailsLines = [];
-  let currentIndex = 0;
-
-  function setPresence(status) {
-    presenceDot.className = 'presence ' + status;
-    presenceDot.title = status.charAt(0).toUpperCase() + status.slice(1);
-  }
-  // Create detail divs inside detailsEl
-  function updateDetailsLines(lines) {
-    detailsEl.innerHTML = '';
-    lines.forEach((line, i) => {
-      const div = document.createElement('div');
-      div.textContent = line;
-      if (i === 0) div.classList.add('active');
-      detailsEl.appendChild(div);
-    });
-    detailsLines = detailsEl.children;
-    currentIndex = 0;
-  }
-  // Cycle visible detail line every 5 seconds
-  function cycleDetails() {
-    if (detailsLines.length <= 1) return; // no need to cycle
-    detailsLines[currentIndex].classList.remove('active');
-    currentIndex = (currentIndex + 1) % detailsLines.length;
-    detailsLines[currentIndex].classList.add('active');
-  }
-  async function fetchStatus() {
-    try {
-      const res = await fetch(lanyardUrl);
-      if (!res.ok) throw new Error('Network error');
-      const data = await res.json();
-      if (!data.success) throw new Error('API error');
-      const presence = data.data.discord_status || 'offline';
-      setPresence(presence);
-      usernameEl.textContent = data.data.discord_user.username || 'SquircleUnderscore';
-      // Build status lines array:
-      const lines = [];
-      // Custom status
-      const customStatus = data.data.activities.find(a => a.type === 4);
-      if (customStatus && customStatus.state) {
-        lines.push(`Custom Status: ${customStatus.state}`);
-      }
-      // Listening to Spotify
-      const spotify = data.data.listening_to_spotify;
-      if (spotify) {
-        lines.push(`Song: ${spotify.song}`);
-        if (spotify.artist) lines.push(`Creator: ${spotify.artist}`);
-      }
-      // Playing a game or other activity (exclude custom and spotify)
-      const otherActivity = data.data.activities.find(a => a.type !== 4 && a.type !== 2);
-      if (otherActivity) {
-        let activityText = otherActivity.name;
-        if (otherActivity.details) activityText += ` - ${otherActivity.details}`;
-        lines.push(`Playing: ${activityText}`);
-      }
-      if (lines.length === 0) {
-        lines.push('No active status');
-      }
-      updateDetailsLines(lines);
-    } catch (e) {
-      // On error show offline presence and fallback text
-      setPresence('offline');
-      usernameEl.textContent = 'Unable to fetch status';
-      updateDetailsLines(['Unable to fetch status']);
-    }
-  }
-  // Initial fetch and start cycle interval
-  fetchStatus();
-  setInterval(cycleDetails, 5000);
-  setInterval(fetchStatus, 5000);
 </script>
 
 

@@ -1,0 +1,106 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Discord Status</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        overflow: hidden;
+      }
+
+      .status-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* center horizontally */
+        gap: 1rem;
+        white-space: nowrap;
+      }
+
+      .presence {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        
+      }
+
+      .online {
+        background: #00ff3c;
+      }
+
+      .idle {
+        background: #ff9500;
+      }
+
+      .dnd {
+        background: #ff0000;
+      }
+
+      .offline {
+        background: #747f8d;
+      }
+
+      .username {
+        font-weight: bold;
+        color: #FF00C5;
+        flex-shrink: 0;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="status-container">
+      <div id="presenceDot" class="presence offline" title="Offline"></div>
+      <div class="username" id="username">← status</div>
+        <!-- dynamic lines will go here -->
+      </div>
+    </div>
+    <script>
+      const userId = "871735378837667880";
+      const lanyardUrl = `https://api.lanyard.rest/v1/users/${userId}`;
+      const presenceDot = document.getElementById("presenceDot");
+      const usernameEl = document.getElementById("username");
+            let currentIndex = 0;
+
+      function setPresence(status) {
+        presenceDot.className = "presence " + status;
+        presenceDot.title = status.charAt(0).toUpperCase() + status.slice(1);
+        usernameEl.textContent = status.toUpperCase(); // Ajoute cette ligne
+
+      }
+      
+      async function fetchStatus() {
+        try {
+          const res = await fetch(lanyardUrl);
+          if (!res.ok) throw new Error("Network error");
+          const data = await res.json();
+          if (!data.success) throw new Error("API error");
+          const presence = data.data.discord_status || "offline";
+          setPresence(presence);
+         
+          // Build status lines array:
+          const lines = [];
+          // Custom status
+          const customStatus = data.data.activities.find((a) => a.type === 4);
+          if (customStatus && customStatus.state) {
+            lines.push(`Custom Status: ${customStatus.state}`);
+          }
+          // Playing a game or other activity (exclude custom and spotify)
+        } catch (e) {
+          // On error show offline presence and fallback text
+          setPresence("offline");
+          usernameEl.textContent = "Unable to fetch status";
+        }
+      }
+      // Initial fetch and start cycle interval
+      fetchStatus();
+      setInterval(cycleDetails, 5000);
+      setInterval(fetchStatus, 5000);
+    </script>
+  </body>
+</html>
