@@ -38,7 +38,7 @@
     var colours=new Array('#f00', '#f06', '#f0f', '#f6f', '#f39', '#f9c'); // colours of the hearts
     var minisize=16; // smallest size of hearts in pixels
     var maxisize=28; // biggest size of hearts in pixels
-    var hearts=66; // maximum number of hearts on screen
+    var hearts=20; // maximum number of hearts on screen
     var over_or_under="over"; // set to "over" for hearts to always be on top, or "under" to allow them to float behind other objects
     
     /*****************************
@@ -439,7 +439,7 @@ body:before {
         <script src="https://status.cafe/current-status.js?name=squircle" defer></script>
         <span style="display: block; height: 10px;"></span>
 
-        <marquee scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left"><a href="https://discord.com/users/871735378837667880"><img src="https://files.catbox.moe/zzvch6.gif" alt="DISCORD: SquircleUnderscore" title="DISCROD: SquircleUnderscore"></a> <a href="https://www.instagram.com/squircleunderscore/"><img src="https://files.catbox.moe/0ugos4.gif"alt="Insta: SquircleUnderscore" title="Insta: SquircleUnderscore"></a></marquee>
+        <marquee scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left"><img src="/cat/qb9pYzX.png"></a><img src="/cat/d7mJF4W.png"></a><img src="/cat/WFpPzZn.png"></a><img src="/cat/ExZ9JCk.png"></a><img src="/cat/jgeciGJ.png"></a><img src="/cat/vfvF2Nu.png"></a></marquee>
 			</div>
       <br>
 			<div class="likes">
@@ -471,8 +471,11 @@ body:before {
 <video id="bg-video" loop>
   <source src="https://fortyseconds.dev/images/badapple.mp4" type="video/mp4">
 </video>
-<div class="pop" style="text-align: center; margin: 0 auto; font-family: sans-serif; font-size: 15px; font-weight: bold; color: #FF00C5;">
-  <p> ↑ ↑ ↓ ↓ ← → ← → b a</p>
+<div id="content">
+
+<div class="pop" style="text-align: center; margin: 0 auto; font-family: sans-serif; font-size: 15px; font-weight: bold; color: #FF00C5; margin-top: 15px;">↑ ↑ ↓ ↓ ← → ← → b a</div>
+
+
 </div>
 
 
@@ -577,8 +580,11 @@ body:before {
     video.play();
     content.classList.add('transparent');
     info.innerText = "🎶 Bad Apple!! activé avec transparence !";
+    
   });
 </script>
+
+
 
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
 
