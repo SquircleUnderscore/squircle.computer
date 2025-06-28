@@ -343,6 +343,72 @@ hr.lool {
   }
 }
 
+.status-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* center horizontally */
+  gap: 1rem;
+  white-space: nowrap;
+}
+
+.presence {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: gray;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.online {
+  background: #43b581;
+}
+
+.idle {
+  background: #faa61a;
+}
+
+.dnd {
+  background: #f04747;
+}
+
+.offline {
+  background: #747f8d;
+}
+
+.username {
+  font-weight: bold;
+  color: #d8b4ff;
+  flex-shrink: 0;
+}
+
+.details {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 600px;
+  font-style: italic;
+  color: #bfa3d9;
+  position: relative;
+  height: 1.2em;
+}
+
+.details > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(20%);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.details > div.active {
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+}
+
 .floating {
   animation: floating 2s ease-in-out infinite;
 }
