@@ -445,7 +445,6 @@ body:before {
         <div id="slideshow" style="text-align: center;">
           <img src="/cat/qb9pYzX.png" class="active" style="text-align: center;">
           <img src="/cat/d7mJF4W.png" style="text-align: center;">
-          <img src="/cat/7FieAqK.png" style="text-align: center;">
           <img src="/cat/ExZ9JCk.png" style="text-align: center;">
           <img src="/cat/jgeciGJ.png" style="text-align: center;">
           <img src="/cat/vfvF2Nu.png" style="text-align: center;">
@@ -609,6 +608,31 @@ body:before {
 </script>
 
 
+<script>
+const steps = 25; // nombre d'étapes dans l'animation
+const maxTranslate = 300;
+const maxRotate = 360;
+const minScale = 0.4;
+const maxScale = 2.2;
+
+let keyframes = `@keyframes teleport-chaos {\n`;
+
+for (let i = 0; i <= steps; i++) {
+  const pct = Math.round((i / steps) * 100);
+  const x = Math.floor(Math.random() * (2 * maxTranslate) - maxTranslate);
+  const y = Math.floor(Math.random() * (2 * maxTranslate) - maxTranslate);
+  const rot = Math.floor(Math.random() * (2 * maxRotate) - maxRotate);
+  const scale = (Math.random() * (maxScale - minScale) + minScale).toFixed(2);
+  const opacity = Math.random() > 0.5 ? 0 : 1;
+
+  keyframes += `  ${pct}% { transform: translate(${x}px, ${y}px) rotate(${rot}deg) scale(${scale}); opacity: ${opacity}; }\n`;
+}
+
+keyframes += `}`;
+
+document.getElementById("teleport-style").textContent = keyframes;
+</script>
+<style id="teleport-style"></style>
 
 
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
