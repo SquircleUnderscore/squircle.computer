@@ -28,34 +28,36 @@
         
       }
 
-      .online {
-        background: #A6E3A1;
-      }
 
-      .idle {
-        background: #F9E1AE;
-      }
+.status-online {
+  color: #00c200;
+  text-shadow: 0 0 5px #00c200, 0 0 10px #00c200;
+  font-size: 22px;
+}
 
-      .dnd {
-        background: #F38CA9;
-      }
+.status-idle {
+  color: #ff9500;
+  text-shadow: 0 0 5px #ff9500, 0 0 10px #ff9500;
+  font-size: 22px;
+}
 
-      .offline {
-        background: #7F849C;
-      }
+.status-dnd {
+  color: #ff0000;
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+    font-size: 22px;
+}
 
-      .username {
-        font-weight: bold;
-        color: #FF00C5;
-        flex-shrink: 0;
-      }
-
+.status-offline {
+  color: #000000;
+  text-shadow: 0 0 5px #555, 0 0 10px #000;
+  font-size: 22px;
+}
 
     </style>
   </head>
   <body>
     <div class="status-container">
-        <div class="username" id="username">Status: ⚫️ Offline</div>
+        <div class="username" id="username">I'm ⚫️ Offline</div>
 
         <!-- dynamic lines will go here -->
       </div>
@@ -67,26 +69,38 @@
       const usernameEl = document.getElementById("username");
             let currentIndex = 0;
 
-            function setPresence(status) {
-  let emoji = "⚫️"; // Default: offline
+function setPresence(status) {
+  let emoji = "⚫️";
+  let className = "status-offline";
+  let label = "OFFLINE";
+
   switch (status) {
     case "online":
       emoji = "🟢";
+      className = "status-online";
+      label = "ONLINE!";
       break;
     case "idle":
       emoji = "🟠";
+      className = "status-idle";
+      label = "IDLE!";
       break;
     case "dnd":
       emoji = "🔴";
+      className = "status-dnd";
+      label = "DND!";
       break;
     case "offline":
     default:
       emoji = "⚫️";
+      className = "status-offline";
+      label = "OFFLINE!";
       break;
   }
 
-  usernameEl.textContent = `${emoji} ${status.toUpperCase()}`;
+  usernameEl.innerHTML = `I'm ${emoji} <span class="${className}">${label}</span>`;
 }
+
 
       
       async function fetchStatus() {
