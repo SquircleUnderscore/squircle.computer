@@ -346,6 +346,7 @@ body:before {
 			<div class="scroller">
 				 <marquee scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left"> This website is optimized for <span class="bold">desktop </span>and<span class="bold"> Chrome-based </span>browsers. /// If you think some images are missing, it’s because catbox.moe is blocked by your government, like 🇦🇺 🇮🇪 🇮🇷 🇦🇫 <a href="https://rentry.org/catboxissues">see this.</a></marquee>
 			</div>
+      
 		</div>
 		<div class="left">
 			<div class="menu">
@@ -379,8 +380,26 @@ body:before {
             <br><br>
             <iframe src="./lanyard.html" frameborder="0"  width="200" height="30" style="border:none; margin-top: -6px;"></iframe>
 <br><br>
-            </div>
-            <iframe width="200" height="200" style="border:none" src="https://rubybulbs.net/neko.html"></iframe>
+
+
+
+
+<div class="button-container">
+  <img src="button.gif" alt="SquircleComputer">
+  <div class="embed-wrap">
+    <input type="text" id="embedCode" value='<a href="https://squircle.computer"><img src="https://squircle.computer/button.gif" alt="SquircleComputer"></a>' readonly>
+    <button onclick="copyEmbed()">copy</button>
+  </div>
+</div>
+<div class="buttonv"style="text-align: center;      ">
+   <button onclick="copyEmbed2()" style="font-size: 8px;">SECRET VERSION</button>
+</div>
+
+
+
+<br>
+</div>
+            <iframe width="200" height="200" style="border:none; margin-top: -10px;" src="https://rubybulbs.net/neko.html"></iframe>
 
 
 
@@ -576,6 +595,33 @@ body:before {
 </script>
 
 
+<script>
+  function copyEmbed() {
+    const input = document.getElementById("embedCode");
+    input.select();
+    input.setSelectionRange(0, 99999); // Mobile support
+    document.execCommand("copy");
+    alert("button code copied!");
+  }
+</script>
+
+<script>
+function copyEmbed2() {
+  const code = `<a href="https://squircle.computer"><img src="https://squircle.computer/button2.gif" alt="SquircleComputer"></a>`;
+  
+  // Crée un élément temporaire pour copier le texte
+  const tempInput = document.createElement("textarea");
+  tempInput.value = code;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+
+  // Affiche l'alerte
+  alert("Secret button copied!");
+}
+
+</script>
 
 <script src="https://cdn.rawgit.com/MachinisteWeb/konami-code-js/master/src/konami-code.js"></script>
 
