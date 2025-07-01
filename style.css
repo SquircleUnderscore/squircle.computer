@@ -728,3 +728,19 @@ video#bg-video {
   border-right: 1px solid #868a8e;
   box-shadow: none;
 }
+
+
+
+
+
+
+
+
+#melonland-surf-club {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+      width: 20px;
+    height: 20px;
+  z-index: 1000; /* Pour s'assurer qu'il soit au-dessus des autres éléments */
+}
