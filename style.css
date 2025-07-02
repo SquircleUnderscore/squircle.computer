@@ -742,5 +742,5 @@ video#bg-video {
   right: 5px;
       width: 20px;
     height: 20px;
-  z-index: 1000; /* Pour s'assurer qu'il soit au-dessus des autres éléments */
+  z-index: 1; /* Pour s'assurer qu'il soit au-dessus des autres éléments */
 }
