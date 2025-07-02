@@ -443,7 +443,7 @@ body:before {
 
 
 				<p><b>name:</b> squircle <br>
-				  <b>age:</b> 16yo 21/05<br>
+				  <b>age:</b> <span id="age"></span><br>
           <b>languages: </b> fr, en<br>
           <b>pronums:</b> any<br>
           <b>location:</b> europe, paris<br>
@@ -514,6 +514,7 @@ body:before {
 <div id="content">
 
 <div class="pop" style="text-align: center; margin: 0 auto; font-family: sans-serif; font-size: 15px; font-weight: bold; color: #FF00C5; margin-top: 15px;">↑ ↑ ↓ ↓ ← → ← → b a</div>
+
 
 
 </div>
@@ -688,6 +689,48 @@ keyframes += `}`;
 document.getElementById("teleport-style").textContent = keyframes;
 </script>
 <style id="teleport-style"></style>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function updateAgeInSeconds() {
+        // Date de naissance : 21 mai 2009 à 00:00 heure locale en France (heure d'été, UTC+2)
+        var birthDate = new Date('2009-05-21T00:00:00+02:00');
+        var currentDate = new Date();
+
+        // Calcul de la différence en secondes (avec décimales)
+        var diffInSeconds = (currentDate - birthDate) / 1000;
+
+        // Formatage avec 2 chiffres après la virgule, virgule française
+        var formatted = diffInSeconds.toLocaleString('fr-FR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+        // Affichage
+        document.getElementById('age').textContent = formatted + "s";
+    }
+
+    updateAgeInSeconds();
+    setInterval(updateAgeInSeconds, 10); 
+</script>
+
+
+
+
+
+
+
+
+
 
 
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
