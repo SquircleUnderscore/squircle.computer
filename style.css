@@ -750,3 +750,53 @@ video#bg-video {
 
 
 
+#toggle-btn {
+  position: fixed; /* au lieu de absolute */
+  top: 50%;
+  left: 5px; /* le coller au bord gauche de l'écran */
+  transform: translateY(-50%);
+  z-index: 1001;
+
+  padding: 0;
+  background-color: #ff00c5;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+
+  transition: transform 0.3s;
+}
+
+
+    #side-window {
+      position: fixed;
+      top: 20px;
+left: -369px; /* Cache complètement la fenêtre */
+      width: 369px;
+      height: calc(100% - 40px);
+      background-color: #fff;
+      border: 1px solid #ff00c5;
+
+      transition: left 0.3s ease-in-out;
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 1000;
+      border-radius: 0px;
+
+  overflow-y: auto;
+
+    }
+
+
+
+
+    #side-window.open {
+      left: 20px;
+    }
