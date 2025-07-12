@@ -328,88 +328,16 @@ body:before {
 </head>
 
 <body>
-<button id="toggle-btn">☰</button>
-
-   <div id="side-window">
-
-    <h1>Silly windows</h1>
-				<div style="justify-content:center;flex-direction:row;flex-wrap:wrap">
-
-<img src="https://files.catbox.moe/mvu638.webp"/>	
-<img src="https://files.catbox.moe/trfufv.webp"/>
-<img src="https://files.catbox.moe/5fyc69.gif"/>	
-<img src="https://files.catbox.moe/nsj31l.png"/>	
-
-<img src="https://files.catbox.moe/1aqwqr.gif"/>
-<img src="https://files.catbox.moe/oivw5v.webp"/>	
-<img src="https://files.catbox.moe/4yvi00.webp"/>	
-<img src="https://files.catbox.moe/fwsvfa.jpg"/>	
-<img src="https://files.catbox.moe/p68a3c.gif"/>	
-<img src="https://files.catbox.moe/7s08jd.webp"/>	
-<img src="https://files.catbox.moe/drekp6.gif"/>	
-<img src="https://files.catbox.moe/0sc2pe.gif"/>	
-<img src="https://files.catbox.moe/pyl290.webp"/>	
-<img src="https://files.catbox.moe/qc8yjq.png"/>
-<img src="https://files.catbox.moe/o7qf7b.webp"/>	
-
-	
-<img src="https://files.catbox.moe/hvl579.gif"/>
-	<img src="https://files.catbox.moe/hyzxja.webp"/>
-
-<img src="https://files.catbox.moe/b3ox7y.png"/>	
-<img src="https://files.catbox.moe/cujc6q.png"/>	
-<img src="https://files.catbox.moe/xz5b44.png"/>	
-
-<img src="https://files.catbox.moe/e3z9z9.gif"/>	
-<img src="https://files.catbox.moe/8q8e88.gif"/>
-<img src="https://files.catbox.moe/kkrkkx.webp"/>	
-
-<img src="https://files.catbox.moe/joplau.png"/>
-<img src="https://files.catbox.moe/ttqlx4.png"/>
-<img src="https://files.catbox.moe/zdi0w7.png"/>
-<img src="https://files.catbox.moe/4tgosx.png"/>
-<img src="https://files.catbox.moe/v7iufo.webp"/>
-<img src="https://files.catbox.moe/ujdjir.gif"/>
-<img src="https://files.catbox.moe/1ckfmr.webp"/>
-<img src="https://files.catbox.moe/9hd5hr.webp"/>
-<img src="https://files.catbox.moe/q3h0hm.webp"/>
-<img src="https://files.catbox.moe/th9xz7.webp"/>
-<img src="https://files.catbox.moe/9hxhju.jpg"/>
-<img src="https://files.catbox.moe/y1qe2o.webp"/>
-
-<img src="https://files.catbox.moe/rcmbmd.gifv"/>	
-<img src="https://files.catbox.moe/2kkjz6.gif"/>	
-<img src="https://files.catbox.moe/sfvu7a.gif"/>
-<img src="https://files.catbox.moe/5hzlga.webp"/>
-<img src="https://files.catbox.moe/v08im8.jpg"/>	
-<img src="https://files.catbox.moe/bkuhk2.webp"/>
-<img src="https://files.catbox.moe/l328mb.gif"/>	
-<img src="https://files.catbox.moe/zgtqo2.jpg"/>	
-<img src="https://files.catbox.moe/3wil84.webp"/>
-<img src="https://files.catbox.moe/k1bjav.png"/>	
-<img src="https://files.catbox.moe/20csix.png"/>	
-<img src="https://files.catbox.moe/3boloc.png"/>	
-<img src="https://files.catbox.moe/y72wd9.png"/>	
-<img src="https://files.catbox.moe/ezbesd.gif"/>	
-<img src="https://files.catbox.moe/9cdoqy.webp"/>	
-<img src="https://files.catbox.moe/y5ytl1.gif"/>	
-<img src="https://files.catbox.moe/ed2r1e.webp"/>	
-<img src="https://files.catbox.moe/d88239.png"/>	
-<img src="https://files.catbox.moe/hvtkvx.gif"/>	
-<img src="https://files.catbox.moe/853dir.pnj"/>
-<img src="https://files.catbox.moe/qtd0jl.png"/>
-<img src="https://files.catbox.moe/c8l7ns.png"/>	
-
-
-
-
-
-
-
+<button id="toggle-btn"  onclick="loadImages()">☰</button>
+<div id="side-window">
+  <h1>Silly windows</h1>
+  
+  
+  <div id="image-container" style="justify-content:center;flex-direction:row;flex-wrap:wrap; display:flex; flex-wrap:wrap; gap:3px; margin-top:3px;">
+    <!-- Les images seront insérées ici dynamiquement -->
+  </div>
 </div>
 
-
-  </div>
 
   <div id="content">
 	<div class="outer">
@@ -838,7 +766,80 @@ document.getElementById("teleport-style").textContent = keyframes;
   </script>
 
 
+<script>
+  function loadImages() {
+    const urls = [
+      "https://files.catbox.moe/mvu638.webp",
+      "https://files.catbox.moe/trfufv.webp",
+      "https://files.catbox.moe/5fyc69.gif",
+      "https://files.catbox.moe/nsj31l.png",
+      "https://files.catbox.moe/1aqwqr.gif",
+      "https://files.catbox.moe/oivw5v.webp",
+      "https://files.catbox.moe/4yvi00.webp",
+      "https://files.catbox.moe/fwsvfa.jpg",
+      "https://files.catbox.moe/p68a3c.gif",
+      "https://files.catbox.moe/7s08jd.webp",
+      "https://files.catbox.moe/drekp6.gif",
+      "https://files.catbox.moe/0sc2pe.gif",
+      "https://files.catbox.moe/pyl290.webp",
+      "https://files.catbox.moe/qc8yjq.png",
+      "https://files.catbox.moe/o7qf7b.webp",
+      "https://files.catbox.moe/hvl579.gif",
+      "https://files.catbox.moe/hyzxja.webp",
+      "https://files.catbox.moe/b3ox7y.png",
+      "https://files.catbox.moe/cujc6q.png",
+      "https://files.catbox.moe/xz5b44.png",
+      "https://files.catbox.moe/e3z9z9.gif",
+      "https://files.catbox.moe/8q8e88.gif",
+      "https://files.catbox.moe/kkrkkx.webp",
+      "https://files.catbox.moe/joplau.png",
+      "https://files.catbox.moe/ttqlx4.png",
+      "https://files.catbox.moe/zdi0w7.png",
+      "https://files.catbox.moe/4tgosx.png",
+      "https://files.catbox.moe/v7iufo.webp",
+      "https://files.catbox.moe/ujdjir.gif",
+      "https://files.catbox.moe/1ckfmr.webp",
+      "https://files.catbox.moe/9hd5hr.webp",
+      "https://files.catbox.moe/q3h0hm.webp",
+      "https://files.catbox.moe/th9xz7.webp",
+      "https://files.catbox.moe/9hxhju.jpg",
+      "https://files.catbox.moe/y1qe2o.webp",
+      "https://files.catbox.moe/rcmbmd.gifv",
+      "https://files.catbox.moe/2kkjz6.gif",
+      "https://files.catbox.moe/sfvu7a.gif",
+      "https://files.catbox.moe/5hzlga.webp",
+      "https://files.catbox.moe/v08im8.jpg",
+      "https://files.catbox.moe/bkuhk2.webp",
+      "https://files.catbox.moe/l328mb.gif",
+      "https://files.catbox.moe/zgtqo2.jpg",
+      "https://files.catbox.moe/3wil84.webp",
+      "https://files.catbox.moe/k1bjav.png",
+      "https://files.catbox.moe/20csix.png",
+      "https://files.catbox.moe/3boloc.png",
+      "https://files.catbox.moe/y72wd9.png",
+      "https://files.catbox.moe/ezbesd.gif",
+      "https://files.catbox.moe/9cdoqy.webp",
+      "https://files.catbox.moe/y5ytl1.gif",
+      "https://files.catbox.moe/ed2r1e.webp",
+      "https://files.catbox.moe/d88239.png",
+      "https://files.catbox.moe/hvtkvx.gif",
+      "https://files.catbox.moe/853dir.pnj",
+      "https://files.catbox.moe/qtd0jl.png",
+      "https://files.catbox.moe/c8l7ns.png"
+    ];
 
+    const container = document.getElementById("image-container");
+    container.innerHTML = ""; // Pour éviter de recharger plusieurs fois
+
+    urls.forEach(url => {
+      const img = document.createElement("img");
+      img.src = url;
+      img.style.maxWidth = "150px"; // ajuste à ta convenance
+      img.style.height = "auto";
+      container.appendChild(img);
+    });
+  }
+</script>
 
 
 
