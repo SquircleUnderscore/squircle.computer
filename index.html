@@ -332,7 +332,6 @@ body:before {
 <div id="side-window">
   <h1>Silly windows</h1>
   
-  
   <div id="image-container" style="justify-content:center;flex-direction:row;flex-wrap:wrap; display:flex; flex-wrap:wrap; gap:3px; margin-top:3px;">
     <!-- Les images seront insérées ici dynamiquement -->
   </div>
@@ -828,21 +827,35 @@ document.getElementById("teleport-style").textContent = keyframes;
       "https://files.catbox.moe/c8l7ns.png"
     ];
 
-    const container = document.getElementById("image-container");
-    container.innerHTML = ""; // Pour éviter de recharger plusieurs fois
+ const container = document.getElementById("image-container");
+    container.innerHTML = "";
 
-    urls.forEach(url => {
-      const img = document.createElement("img");
-      img.src = url;
-      img.style.maxWidth = "150px"; // ajuste à ta convenance
+    let index = 0;
+
+    function loadNext() {
+      if (index >= urls.length) return;
+
+      const img = new Image();
+      img.src = urls[index];
+      img.style.maxWidth = "150px";
       img.style.height = "auto";
-      container.appendChild(img);
-    });
+
+      img.onload = () => {
+        container.appendChild(img);
+        index++;
+        setTimeout(loadNext, 0); // 4 secondes après chargement
+      };
+
+      img.onerror = () => {
+        console.warn("Erreur de chargement : " + urls[index]);
+        index++;
+        setTimeout(loadNext, 0,500); // Continue même si erreur
+      };
+    }
+
+    loadNext();
   }
 </script>
-
-
-
 
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
 
