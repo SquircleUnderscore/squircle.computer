@@ -750,7 +750,7 @@ video#bg-video {
 
 
 
-#toggle-btn {
+#open-btn {
   position: fixed; /* au lieu de absolute */
   top: 50%;
   left: 5px; /* le coller au bord gauche de l'écran */
@@ -800,3 +800,30 @@ left: -369px; /* Cache complètement la fenêtre */
     #side-window.open {
       left: 20px;
     }
+
+#server-status {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  color: #000000;
+  padding: 8px 12px;
+  border-radius: 0px;
+  font-family: sans-serif;
+  font-size: 13px;
+  z-index: 9999;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1;
+}
+#server-status .label {
+  opacity: 0.6;
+  margin-right: 3px;
+}
+#server-status.online {
+  border-left: 4px solid #4caf4f00;
+}
+#server-status.offline {
+  border-left: 4px solid #f4433600;
+}

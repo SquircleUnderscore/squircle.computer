@@ -237,7 +237,8 @@
   <link rel="stylesheet" href="siwwidget.css">
   <link rel="stylesheet" href="https://ultrakill.nekoweb.org/onionring.css">
   <link rel="stylesheet" href="https://milkyway.moe/onlinewire/onionring.css">
-      
+  <link rel="stylesheet" href="https://unpkg.com/7.css/dist/7.scoped.css">
+
   <script type="text/javascript">
     // <![CDATA[
     var speed=100; // speed colours change, 1 second = 1000
@@ -328,7 +329,7 @@ body:before {
 </head>
 
 <body>
-<button id="toggle-btn"  onclick="loadImages()">☰</button>
+<button id="open-btn"  onclick="loadImages()">☰</button>
 <div id="side-window">
   <h1>Silly windows</h1>
   
@@ -386,7 +387,7 @@ body:before {
           
         </hr>
           <p style="font-size: 7px; text-align: center" >If nothing shows up, I’m probably sleeping xD</p>
-            <marquee  scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left" style="text-align: center"><img src="https://files.catbox.moe/irhotd.gif"><img src="https://files.catbox.moe/5oxh61.gif"><img src="https://files.catbox.moe/s3brdm.gif"><img src="https://files.catbox.moe/m7w29m.jpg"><img src="https://files.catbox.moe/iyhdo6.gif"><img src="https://files.catbox.moe/8nbhet.gif"><img src="https://files.catbox.moe/up6q76.png"><img src='https://files.catbox.moe/nrt9jz.gif'><img src='https://files.catbox.moe/ekvq79.gif'><img src='https://files.catbox.moe/yr2a9b.png'><iframe src="//incr.easrng.net/badge?key=squircle" style="background: url(//incr.easrng.net/bg.gif)" title="increment badge" width="88" height="31" frameborder="0"></iframe></marquee>
+            <marquee  scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left" style="text-align: center"><img src="https://files.catbox.moe/irhotd.gif"><img src="https://files.catbox.moe/5oxh61.gif"><img src="https://files.catbox.moe/s3brdm.gif"><img src="https://files.catbox.moe/m7w29m.jpg"><img src="https://files.catbox.moe/iyhdo6.gif"><img src="https://files.catbox.moe/8nbhet.gif"><img src="https://files.catbox.moe/up6q76.png"><img src='https://files.catbox.moe/nrt9jz.gif'><img src='https://files.catbox.moe/ekvq79.gif'><img src='https://files.catbox.moe/yr2a9b.png'><img src='https://files.catbox.moe/i3z7v2.png'><img src='https://files.catbox.moe/6vhnlw.webp'><iframe src="//incr.easrng.net/badge?key=squircle" style="background: url(//incr.easrng.net/bg.gif)" title="increment badge" width="88" height="31" frameborder="0"></iframe></marquee>
             <br><br>
             <iframe src="./lanyard.html" frameborder="0"  width="200" height="30" style="border:none; margin-top: -6px;"></iframe>
 <br><br>
@@ -526,6 +527,38 @@ body:before {
 
 
     <object id="melonland-surf-club" data="https://melonland.net/surf-badge.svg?fill=#ff00c5" type="image/svg+xml" style="width: 100px; height: 100px;"></object>
+
+
+
+<div id="server-status" class="offline">
+  <span><span class="label">Temp:</span><span id="status-temp">...</span></span>
+  <span><span class="label">CPU:</span><span id="status-cpu">...</span></span>
+  <span><span class="label">RAM:</span><span id="status-ram">...</span></span>
+  <span><span class="label">Ping:</span><span id="status-ping">...</span></span>
+</div>
+
+
+<div class="win7" style="position: fixed; 
+            top: 15%;  
+            left: 32px;
+            z-index: 1000;">
+<div class="window active" style="max-width: 300px">
+  <div class="title-bar">
+    <div class="title-bar-text">.ONION</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="window-body has-space">
+  <p>Available via the Tor protocol <a href="http://uoxsamfg6eryhy32tqicqlv2yv4mjuiuyikselxr7kwdsshmssmcnlyd.onion/">⤻</a>.</p>
+             <section style="display: flex; justify-content: flex-end; gap: 6px">
+      <button onclick="window.open('http://uoxsamfg6eryhy32tqicqlv2yv4mjuiuyikselxr7kwdsshmssmcnlyd.onion/')">Open</button>
+    </section>
+  </div>
+</div>
+
 
 <div id="background"></div>
 
@@ -747,9 +780,9 @@ document.getElementById("teleport-style").textContent = keyframes;
 </script>
 
   <script>
-    const toggleBtn = document.getElementById('toggle-btn');
+    const toggleBtn = document.getElementById('open-btn');
     const sideWindow = document.getElementById('side-window');
-
+    
     function updateArrow() {
       const isOpen = sideWindow.classList.contains('open');
       toggleBtn.textContent = isOpen ? '❮' : '❯';
@@ -814,17 +847,24 @@ document.getElementById("teleport-style").textContent = keyframes;
       "https://files.catbox.moe/3wil84.webp",
       "https://files.catbox.moe/k1bjav.png",
       "https://files.catbox.moe/20csix.png",
+      "https://files.catbox.moe/wo84z6.webp",
       "https://files.catbox.moe/3boloc.png",
       "https://files.catbox.moe/y72wd9.png",
       "https://files.catbox.moe/ezbesd.gif",
       "https://files.catbox.moe/9cdoqy.webp",
+      "https://files.catbox.moe/tvsgkx.png",
       "https://files.catbox.moe/y5ytl1.gif",
+      "https://files.catbox.moe/3wkeuz.webp",
       "https://files.catbox.moe/ed2r1e.webp",
       "https://files.catbox.moe/d88239.png",
       "https://files.catbox.moe/hvtkvx.gif",
       "https://files.catbox.moe/853dir.pnj",
+      "https://files.catbox.moe/7okk8s.pnj",
       "https://files.catbox.moe/qtd0jl.png",
-      "https://files.catbox.moe/c8l7ns.png"
+      "https://files.catbox.moe/jtfnei.gif",
+      "https://files.catbox.moe/c8l7ns.png",
+      "https://files.catbox.moe/v07yau.webp",
+
     ];
 
  const container = document.getElementById("image-container");
@@ -855,6 +895,57 @@ document.getElementById("teleport-style").textContent = keyframes;
 
     loadNext();
   }
+</script>
+
+<script>
+const url = "https://drive.squircle.computer/public/temp.json";
+
+
+
+function formatAgo(seconds) {
+  if (seconds < 60) return `${seconds}s ago`;
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  return `${hours}h ago`;
+}
+
+function updateServerStatus() {
+  fetch(url)
+    .then(res => {
+      if (!res.ok) throw new Error("Fetch failed");
+      return res.json();
+    })
+    .then(data => {
+      const now = Math.floor(Date.now() / 1000);
+      const delay = now - data.time;
+
+      const temp = data.temp !== undefined ? `${data.temp}°C` : "-";
+      const cpu = data.cpu !== undefined ? `${data.cpu}%` : "-";
+      const ram = data.ram !== undefined ? `${data.ram}%` : "-";
+      const lastPing = formatAgo(delay);
+
+      const statusDiv = document.getElementById("server-status");
+      statusDiv.className = delay < 960 ? "online" : "offline";
+
+      document.getElementById("status-temp").textContent = temp;
+      document.getElementById("status-cpu").textContent = cpu;
+      document.getElementById("status-ram").textContent = ram;
+      document.getElementById("status-ping").textContent = lastPing;
+    })
+    .catch(() => {
+      const statusDiv = document.getElementById("server-status");
+      statusDiv.className = "offline";
+
+      document.getElementById("status-temp").textContent = "Failed to fetch";
+      document.getElementById("status-cpu").textContent = "server offline";
+      document.getElementById("status-ram").textContent = "Failed to fetch";
+      document.getElementById("status-ping").textContent = "server offline";
+    });
+}
+
+updateServerStatus();
+setInterval(updateServerStatus, 30000);
 </script>
 
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
