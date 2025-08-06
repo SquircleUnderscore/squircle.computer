@@ -495,8 +495,6 @@ body:before {
           <img src="/cat/qb9pYzX.png" class="active" style="text-align: center;">
           <img src="/cat/d7mJF4W.png" style="text-align: center;">
           <img src="/cat/7FieAqK.png" style="text-align: center;">
-          <img src="/cat/2b4k3a1.png" style="text-align: center;">
-          <img src="/cat/QRVupBA.png" style="text-align: center;">
           <img src="/cat/ExZ9JCk.png" style="text-align: center;">
           <img src="/cat/jgeciGJ.png" style="text-align: center;">
           <img src="/cat/vfvF2Nu.png" style="text-align: center;">
@@ -512,7 +510,11 @@ body:before {
 		</div>
 	</div>
 
-  <img id="hover-image" src="https://files.catbox.moe/hy7or1.png" style="position: fixed; bottom: 0; left: 1100px; width: 400px; height: auto; z-index: 1000;">
+
+
+
+
+  <img id="hover-image" src="https://files.catbox.moe/hy7or1.png" style="position: fixed; bottom: 0; left: 1100px; width: 400px; height: auto; z-index: 999;">
 
 <div style="position: relative;">
   <img  src="https://files.catbox.moe/lzvbn5.png" style="position: absolute; top: -972px; right: 380px; width: 100px; height: auto; z-index: 1000;" ></img>
@@ -534,7 +536,7 @@ body:before {
   <span><span class="label">Temp:</span><span id="status-temp">...</span></span>
   <span><span class="label">CPU:</span><span id="status-cpu">...</span></span>
   <span><span class="label">RAM:</span><span id="status-ram">...</span></span>
-  <span><span class="label">Ping:</span><span id="status-ping">...</span></span>
+  <span><span class="label">Update:</span><span id="status-ping">...</span></span>
 </div>
 
 
@@ -948,11 +950,41 @@ updateServerStatus();
 setInterval(updateServerStatus, 30000);
 </script>
 
+
+
+
+<script>
+  function isMobile() {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function checkScreen() {
+    const tooSmall = window.innerWidth < 768; // seuil ajustable
+    const warning = document.getElementById('mobile-warning');
+    if (isMobile() || tooSmall) {
+      warning.style.display = 'flex';
+    } else {
+      warning.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('resize', checkScreen);
+  window.addEventListener('DOMContentLoaded', checkScreen);
+</script>
+
+
+
+
+
 <script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
 
 
 
-
+<div id="mobile-warning" style="display:none;">
+  <div id="mobile-warning-inner">
+    <p>Go to desktop, I didn't have time for mobile responsiveness, I have life.</p>
+  </div>
+</div>
 
 </body>
 </html>
