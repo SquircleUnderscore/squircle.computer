@@ -1,994 +1,156 @@
-
 <!DOCTYPE html>
-
-<html>
-  <script data-goatcounter="https://squircle.goatcounter.com/count"
-  async src="//gc.zgo.at/count.js"></script>
- 
-
-
-
-
-<style>	body {
-	background-image: url('sakura.gif');
-      background-attachment: fixed;
-    overflow-x: hidden;
-      animation: move-background 40s linear infinite;
-
-} 
-
-@keyframes move-background {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: -255px 255px;
-    }
-}
-
-
-
-</style>
-
-<>
-
-
-  <script type="text/javascript">
-    // <![CDATA[
-    var colours=new Array('#f00', '#f06', '#f0f', '#f6f', '#f39', '#f9c'); // colours of the hearts
-    var minisize=16; // smallest size of hearts in pixels
-    var maxisize=28; // biggest size of hearts in pixels
-    var hearts=20; // maximum number of hearts on screen
-    var over_or_under="over"; // set to "over" for hearts to always be on top, or "under" to allow them to float behind other objects
-    
-    /*****************************
-    *JavaScript Love Heart Cursor*
-    *  (c)2013+ mf2fm web-design *
-    *   http://www.mf2fm.com/rv  *
-    *  DON'T EDIT BELOW THIS BOX *
-    *****************************/
-    var x=ox=400;
-    var y=oy=300;
-    var swide=800;
-    var shigh=600;
-    var sleft=sdown=0;
-    var herz=new Array();
-    var herzx=new Array();
-    var herzy=new Array();
-    var herzs=new Array();
-    var kiss=false;
-    
-    if (typeof('addRVLoadEvent')!='function') function addRVLoadEvent(funky) {
-      var oldonload=window.onload;
-      if (typeof(oldonload)!='function') window.onload=funky;
-      else window.onload=function() {
-        if (oldonload) oldonload();
-        funky();
-      }
-    }
-    
-    addRVLoadEvent(mwah);
-    
-    function mwah() { if (document.getElementById) {
-      var i, heart;
-      for (i=0; i<hearts; i++) {
-        heart=createDiv("auto", "auto");
-        heart.style.visibility="hidden";
-      heart.style.zIndex=(over_or_under=="over")?"1001":"0";
-        heart.style.color=colours[i%colours.length];
-      heart.style.pointerEvents="none";
-        if (navigator.appName=="Microsoft Internet Explorer") heart.style.filter="alpha(opacity=75)";
-        else heart.style.opacity=0.75;
-        heart.appendChild(document.createTextNode(String.fromCharCode(9829)));
-        document.body.appendChild(heart);
-        herz[i]=heart;
-      herzy[i]=false;
-      }
-      set_scroll();
-      set_width();
-      herzle();
-    }}
-    
-    function herzle() {
-      var c;
-      if (Math.abs(x-ox)>1 || Math.abs(y-oy)>1) {
-        ox=x;
-        oy=y;
-        for (c=0; c<hearts; c++) if (herzy[c]===false) {
-        herz[c].firstChild.nodeValue=String.fromCharCode(9829);
-          herz[c].style.left=(herzx[c]=x-minisize/2)+"px";
-          herz[c].style.top=(herzy[c]=y-minisize)+"px";
-          herz[c].style.fontSize=minisize+"px";
-        herz[c].style.fontWeight='normal';
-          herz[c].style.visibility='visible';
-          herzs[c]=minisize;
-          break;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squircle - Rework in Progress</title>
+    <style>
+        @font-face {
+            font-family: basiic;
+            src: url(basiic.ttf);
         }
-      }
-      for (c=0; c<hearts; c++) if (herzy[c]!==false) blow_me_a_kiss(c);
-      setTimeout("herzle()", 40);
-    }
-    
-    document.onmousedown=pucker;
-    document.onmouseup=function(){clearTimeout(kiss);};
-    
-    function pucker() {
-      ox=-1;
-      oy=-1;
-      kiss=setTimeout('pucker()', 100);
-    }
-    
-    function blow_me_a_kiss(i) {
-      herzy[i]-=herzs[i]/minisize+i%2;
-      herzx[i]+=(i%5-2)/5;
-      if (herzy[i]<sdown-herzs[i] || herzx[i]<sleft-herzs[i] || herzx[i]>sleft+swide-herzs[i]) {
-        herz[i].style.visibility="hidden";
-        herzy[i]=false;
-      }
-      else if (herzs[i]>minisize+2 && Math.random()<.5/hearts) break_my_heart(i);
-      else {
-        if (Math.random()<maxisize/herzy[i] && herzs[i]<maxisize) herz[i].style.fontSize=(++herzs[i])+"px";
-        herz[i].style.top=herzy[i]+"px";
-        herz[i].style.left=herzx[i]+"px";
-      }
-    }
-    
-    function break_my_heart(i) {
-      var t;
-      herz[i].firstChild.nodeValue=String.fromCharCode(9676);
-      herz[i].style.fontWeight='bold';
-      herzy[i]=false;
-      for (t=herzs[i]; t<=maxisize; t++) setTimeout('herz['+i+'].style.fontSize="'+t+'px"', 60*(t-herzs[i]));
-      setTimeout('herz['+i+'].style.visibility="hidden";', 60*(t-herzs[i]));
-    }
-    
-    document.onmousemove=mouse;
-    function mouse(e) {
-      if (e) {
-        y=e.pageY;
-        x=e.pageX;
-      }
-      else {
-        set_scroll();
-        y=event.y+sdown;
-        x=event.x+sleft;
-      }
-    }
-    
-    window.onresize=set_width;
-    function set_width() {
-      var sw_min=999999;
-      var sh_min=999999;
-      if (document.documentElement && document.documentElement.clientWidth) {
-        if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
-        if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
-      }
-      if (typeof(self.innerWidth)=='number' && self.innerWidth) {
-        if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
-        if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
-      }
-      if (document.body.clientWidth) {
-        if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
-        if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
-      }
-      if (sw_min==999999 || sh_min==999999) {
-        sw_min=800;
-        sh_min=600;
-      }
-      swide=sw_min;
-      shigh=sh_min;
-    }
-    
-    window.onscroll=set_scroll;
-    function set_scroll() {
-      if (typeof(self.pageYOffset)=='number') {
-        sdown=self.pageYOffset;
-        sleft=self.pageXOffset;
-      }
-      else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
-        sdown=document.body.scrollTop;
-        sleft=document.body.scrollLeft;
-      }
-      else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
-        sleft=document.documentElement.scrollLeft;
-        sdown=document.documentElement.scrollTop;
-      }
-      else {
-        sdown=0;
-        sleft=0;
-      }
-    }
-    
-    function createDiv(height, width) {
-      var div=document.createElement("div");
-      div.style.position="absolute";
-      div.style.height=height;
-      div.style.width=width;
-      div.style.overflow="hidden";
-      div.style.backgroundColor="transparent";
-      return (div);
-    }
-    // ]]>
-    </script>
 
-<!-- HTML Meta Tags -->
-<meta name="description" content="An amazing and incredible website! Experience something unforgettable. Squircle.computer goes beyond the competition to create the most immersive and exciting thing in the world! 🚀">
-
-<!-- Facebook Meta Tags -->
-<meta property="og:url" content="https://squircle.computer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SQUIRCLE DOT COMPUTER">
-<meta property="og:description" content="An amazing and incredible website! Experience something unforgettable. Squircle.computer goes beyond the competition to create the most immersive and exciting thing in the world! 🚀">
-<meta property="og:image" content="https://opengraph.b-cdn.net/production/images/7386f15e-b816-4c8a-a1bf-e7215e51b7cf.png?token=ZbBXKQInTcU-VKDqycSOqTny0sQNiUqPQAiSslp1e0M&height=675&width=1200&expires=33286536885">
-
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:domain" content="squircle.computer">
-<meta property="twitter:url" content="https://squircle.computer">
-<meta name="twitter:title" content="SQUIRCLE DOT COMPUTER">
-<meta name="twitter:description" content="An amazing and incredible website! Experience something unforgettable. Squircle.computer goes beyond the competition to create the most immersive and exciting thing in the world! 🚀">
-<meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/7386f15e-b816-4c8a-a1bf-e7215e51b7cf.png?token=ZbBXKQInTcU-VKDqycSOqTny0sQNiUqPQAiSslp1e0M&height=675&width=1200&expires=33286536885">
-
-<!-- Meta Tags Generated via https://www.opengraph.xyz -->
-
-
-	<title>Squircle.computer</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" href="siwwidget.css">
-  <link rel="stylesheet" href="https://ultrakill.nekoweb.org/onionring.css">
-  <link rel="stylesheet" href="https://milkyway.moe/onlinewire/onionring.css">
-  <link rel="stylesheet" href="https://unpkg.com/7.css/dist/7.scoped.css">
-
-  <script type="text/javascript">
-    // <![CDATA[
-    var speed=100; // speed colours change, 1 second = 1000
-    var glow=5; // can be set from '0' for no glow, to 10
-    var raincol=new Array("#ff0000", "#ff5500", "#ffaa00", "#ffff00", "#aaff00", "#55ff00", "#00ff00", "#00ff55", "#00ffaa", "#00ffff", "#00aaff", "#0055ff", "#0000ff", "#5500ff", "#aa00ff", "#ff00ff", "#ff00aa", "#ff0055"); // change the colours if you want to
-    var alink="https://squircle.computer/"; // page to link text to (set to ="" for no link)
-    
-    /****************************
-    *    Rainbow Text Effect    *
-    *(c)2003-13 mf2fm web-design*
-    *  http://www.mf2fm.com/rv  *
-    * DON'T EDIT BELOW THIS BOX *
-    ****************************/
-    var rainbow, raintxt, raincnt=0;
-    
-    function addLoadEvent(funky) {
-      var oldonload=window.onload;
-      if (typeof(oldonload)!='function') window.onload=funky;
-      else window.onload=function() {
-        if (oldonload) oldonload();
-        funky();
-      }
-    }
-    
-    addLoadEvent(regenbogen);
-    
-    function regenbogen() { if (document.getElementById) {
-      var i, rainbeau;
-      rainbow=document.getElementById("rainbow");
-      raintxt=rainbow.firstChild.nodeValue;
-      while (rainbow.childNodes.length) rainbow.removeChild(rainbow.childNodes[0]);
-      for (i=0; i<raintxt.length; i++) {
-        rainbeau=document.createElement("span");
-        rainbeau.setAttribute("id", "rain"+i);
-        rainbeau.appendChild(document.createTextNode(raintxt.charAt(i)));
-        if (alink) {
-          rainbeau.style.cursor="pointer";
-          rainbeau.onclick=function() { top.location.href=alink; }
+        :root {
+            --ctp-base: #1e1e2e;
+            --ctp-text: #cdd6f4;
+            --ctp-subtext1: #bac2de;
+            --ctp-subtext0: #a6adc8;
+            --my-pink: #ff00c5;
         }
-        rainbow.appendChild(rainbeau);
-      }
-      rainbow=setInterval ("raining()", speed);
-    }}
-    
-    function raining() {
-      var i, c;
-      for (i=0; i<raintxt.length; i++) {
-        c=raincol[(i+raincnt)%raincol.length];
-        document.getElementById("rain"+i).style.color=c;
-      if (glow) document.getElementById("rain"+i).style.textShadow=c+" 0px 0px "+glow+"px";
-      }
-      raincnt++;
-    }
-    // ]]>
-    </script>
 
+        body {
+            background-color: var(--ctp-base);
+            color: var(--ctp-text);
+            font-family: 'basiic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
+        h1 {
+            font-size: 3rem;
+            color: var(--my-pink);
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
 
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
+        p {
+            font-size: 1.2rem;
+            color: var(--ctp-subtext1);
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
 
+        .links {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-<style>
-body:before {
-	content: " ";
-	height: 100vh;
-	width: 100vw;
-	display: block;
-	position: fixed; 
-	top: 0; 
-	left: 0; 
-	z-index: 20;
-	background-image: url('https://squircle.computer/tenor.gif');
-	background-size: cover;
-	background-repeat: no-repeat;
-    background-position:center;
-	animation: yourAnimation 2600ms ease 0s 1 normal forwards;
-	pointer-events: none;
-  z-index: 9999;
+        .link-item {
+            color: var(--ctp-subtext0);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 10px;
+        }
 
-}
+        .link-item svg {
+            fill: var(--my-pink);
+            transition: transform 0.3s ease;
+        }
 
-@keyframes yourAnimation { 0.0%{ opacity: 1;} 75%{ opacity: 1; } 100%{ opacity: 0;} } 
+        .link-item:hover {
+            color: var(--ctp-text);
+            transform: translateY(-5px);
+        }
 
-</style>
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 197, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 0, 197, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 197, 0); }
+        }
 
+        .btn-old-site {
+            background-color: transparent;
+            color: var(--my-pink);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--my-pink);
+            /* Square button */
+            border-radius: 0; 
+            animation: pulse 1.5s infinite;
+        }
 
+        .btn-old-site:hover {
+            background-color: var(--my-pink);
+            color: var(--ctp-base);
+            animation: none;
+            transform: scale(1.1);
+            box-shadow: none;
+        }
+        
+        svg {
+            fill: currentColor;
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .links {
+                gap: 1rem;
+            }
+            .link-item {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-<button id="open-btn"  onclick="loadImages()">☰</button>
-<div id="side-window">
-  <h1>Silly windows</h1>
-  
-  <div id="image-container" style="justify-content:center;flex-direction:row;flex-wrap:wrap; display:flex; flex-wrap:wrap; gap:3px; margin-top:3px;">
-    <!-- Les images seront insérées ici dynamiquement -->
-  </div>
-</div>
+    <h1>Goodbye 😔</h1>
+    <p>Don't worry, this is not a goodbye!<br>The site is just under construction, big changes are coming.<br>You can still access the old website below.</p>
 
-
-  <div id="content">
-	<div class="outer">
-		<div class="title">
-			<div class="site-title"><span id="rainbow">SQUIRCLE.COMPUTER</span></div>
-		
-      <br><br>
-
-      <div id="wcb" class="carbonbadge"></div>
-      <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
-
-		</div>
-  
-   
-		<div class="banner-wrapper">
-			<div class="banner"></div>
-			<div class="scroller">
-				 <marquee scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left"> This website is optimized for <span class="bold">desktop </span>and<span class="bold"> Chrome-based </span>browsers. /// If you think some images are missing, it’s because catbox.moe is blocked by your government, like 🇦🇺 🇮🇪 🇮🇷 🇦🇫 <a href="https://rentry.org/catboxissues">see this.</a></marquee>
-			</div>
-      
-		</div>
-		<div class="left">
-			<div class="menu">
-				<a href="01home.html" target="content">home</a>
-				<a href="02pics.html" target="content" style="color: blueviolet;">my pics <img src="https://files.catbox.moe/xdbra2.gif" height="16" style="vertical-align: -4px;"></a>
-				<a href="04links.html" target="content">links</a>
-        <a href="05draw.html" target="content" style="font-weight: bold;">Free Draw</a>
-        <a onclick="window.open('/webdeck-player/index.html', 'Web Deck Player', 'height=250, width=600')">>player <img src="https://files.catbox.moe/543n1t.gif" height="16" style="vertical-align: -3px;"></a></a>
-			</div>
-			<div class="small">
-        <hr>
-       
-
-          
-          <table>
-        <div class="menuside"> 
-            <div class="music">
-                <span class="titlewidget">Now Listening to:</span>
-                <div class="content">
-                    <div id="listening"></div>
-                </div>
-            </div>
-          </div>
-
-          
-          </table>
-          
-        </hr>
-          <p style="font-size: 7px; text-align: center" >If nothing shows up, I’m probably sleeping xD</p>
-            <marquee  scrollamount="6" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();" direction="left" style="text-align: center"><img src="https://files.catbox.moe/irhotd.gif"><img src="https://files.catbox.moe/5oxh61.gif"><img src="https://files.catbox.moe/s3brdm.gif"><img src="https://files.catbox.moe/m7w29m.jpg"><img src="https://files.catbox.moe/iyhdo6.gif"><img src="https://files.catbox.moe/8nbhet.gif"><img src="https://files.catbox.moe/up6q76.png"><img src='https://files.catbox.moe/nrt9jz.gif'><img src='https://files.catbox.moe/ekvq79.gif'><img src='https://files.catbox.moe/yr2a9b.png'><img src='https://files.catbox.moe/i3z7v2.png'><img src='https://files.catbox.moe/6vhnlw.webp'><iframe src="//incr.easrng.net/badge?key=squircle" style="background: url(//incr.easrng.net/bg.gif)" title="increment badge" width="88" height="31" frameborder="0"></iframe></marquee>
-            <br><br>
-            <iframe src="./lanyard.html" frameborder="0"  width="200" height="30" style="border:none; margin-top: -6px;"></iframe>
-<br><br>
-
-
-
-
-<div class="button-container">
-  <img src="button.gif" alt="SquircleComputer">
-  <div class="embed-wrap">
-    <input type="text" id="embedCode" value='<a href="https://squircle.computer"><img src="https://squircle.computer/button.gif" alt="SquircleComputer"></a>' readonly>
-    <button onclick="copyEmbed()">copy</button>
-  </div>
-</div>
-<div class="buttonv"style="text-align: center;      ">
-   <button onclick="copyEmbed2()" style="font-size: 8px;">SECRET VERSION</button>
-</div>
-
-
-
-<br>
-</div>
-            <iframe width="200" height="200" style="border:none; margin-top: -10px;" src="https://rubybulbs.net/neko.html"></iframe>
-
-
-
-		</div>
-		<div class="main">
-
-      <iframe name="content" src="01home.html" class="content" allowfullscreen></iframe>
-<br><br>
-
-
-                    <div style="height:145px; overflow-y:scroll; overflow-x:hidden; border:1px solid; border-color:#FF00C5; padding-left: 10px; padding-right: 10px; background-color:#fff;"><CENTER>
-
-
-
-            <div style="text-align: center; margin: 0 auto; ">
-        <a href="https://hotlinewebring.club/squircle/previous">←</a> <a href="https://hotlinewebring.club/">Hotline Webring</a> <a href="https://hotlinewebring.club/squircle/next">→</a> 
-        <a href='https://webring.dinhe.net/prev/https://squircle.computer'>←</a> <a href="https://webring.dinhe.net/">Retronaut</a> <a href='https://webring.dinhe.net/next/https://squircle.computer'>→</a>
-
-</div>
-
-<div id='francophonering'>
-  <script type="text/javascript" src="https://francophonering.neocities.org/onionring-variables.js"></script>
-  <script type="text/javascript" src="https://francophonering.neocities.org/onionring-widget.js"></script>
-</div>
-
-                    <div id='siwebring'>
-  	                    <script src="https://squircle.computer/siwebringuservars.js"></script>
-  	                    <script src="https://dears.nekoweb.org/siwebring/onionring-variables.js"></script>
-                        <script src="https://dears.nekoweb.org/siwebring/onionring-widget.js"></script>
-                    </div>
-
-<div id='onlinewire-webring'>
-<script type="text/javascript" src="https://milkyway.moe/onlinewire/onionring-variables.js"></script>
-<script type="text/javascript" src="https://milkyway.moe/onlinewire/onionring-widget.js"></script>
-</div>
-
-<div id='skibiring'> <script type="text/javascript" src="https://ultrakill.nekoweb.org/onionring-variables.js"></script> <script type="text/javascript" src="https://ultrakill.nekoweb.org/onionring-widget.js"></script> </div>
-                                        
-
-</CENTER>
-                  </div>
-
-    <iframe src="https://john.citrons.xyz/embed?ref=example.com" style="margin-left:auto;display:block;margin-right:auto;max-width:732px;width:100%;height:94px;border:none; margin-top: 2px"></iframe>
-
-
-
-
-
+    <div class="links">
+        <a href="https://bsky.app/profile/squircle.computer" class="link-item" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 11.3884C11.0942 9.62673 8.62833 6.34423 6.335 4.7259C4.13833 3.17506 3.30083 3.4434 2.75167 3.69256C2.11583 3.9784 2 4.95506 2 5.52839C2 6.10339 2.315 10.2367 2.52 10.9276C3.19917 13.2076 5.61417 13.9776 7.83917 13.7309C4.57917 14.2142 1.68333 15.4017 5.48083 19.6292C9.65833 23.9542 11.2058 18.7017 12 16.0392C12.7942 18.7017 13.7083 23.7651 18.4442 19.6292C22 16.0392 19.4208 14.2142 16.1608 13.7309C18.3858 13.9784 20.8008 13.2076 21.48 10.9276C21.685 10.2376 22 6.10256 22 5.52923C22 4.95423 21.8842 3.97839 21.2483 3.6909C20.6992 3.44256 19.8617 3.17423 17.665 4.72423C15.3717 6.34506 12.9058 9.62756 12 11.3884Z"/></svg>
+            <span>BlueSky</span>
+        </a>
+        <a href="https://en.pronouns.page/@Squircle_" class="link-item" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H18C18 18.6863 15.3137 16 12 16C8.68629 16 6 18.6863 6 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11Z"/></svg>
+            <span>Pronouns</span>
+        </a>
+        <a href="https://matrix.to/#/@me:squircle.computer" class="link-item" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0.844 0.735v30.531h2.197v0.735h-3.041v-32h3.041v0.735zM10.235 10.412v1.547h0.041c0.412-0.595 0.912-1.047 1.489-1.371 0.579-0.323 1.251-0.484 2-0.484 0.719 0 1.38 0.141 1.975 0.417 0.599 0.281 1.047 0.776 1.359 1.479 0.339-0.5 0.803-0.943 1.38-1.323 0.579-0.38 1.267-0.573 2.063-0.573 0.604 0 1.161 0.073 1.677 0.224 0.521 0.145 0.959 0.38 1.328 0.703 0.365 0.329 0.651 0.751 0.86 1.272 0.203 0.52 0.307 1.151 0.307 1.891v7.635h-3.129v-6.468c0-0.381-0.016-0.745-0.048-1.084-0.020-0.307-0.099-0.604-0.239-0.88-0.131-0.251-0.333-0.459-0.584-0.593-0.255-0.152-0.609-0.224-1.047-0.224-0.443 0-0.797 0.083-1.068 0.249-0.265 0.167-0.489 0.396-0.64 0.667-0.161 0.287-0.265 0.604-0.308 0.927-0.052 0.349-0.077 0.699-0.083 1.048v6.359h-3.131v-6.401c0-0.339-0.005-0.672-0.025-1-0.011-0.317-0.073-0.624-0.193-0.916-0.104-0.281-0.301-0.516-0.552-0.672-0.255-0.167-0.636-0.255-1.136-0.255-0.151 0-0.348 0.031-0.588 0.099-0.24 0.067-0.479 0.192-0.703 0.375-0.229 0.188-0.428 0.453-0.589 0.797-0.161 0.343-0.239 0.796-0.239 1.359v6.62h-3.131v-11.421zM31.156 31.265v-30.531h-2.197v-0.735h3.041v32h-3.041v-0.735z"></path></svg>
+            <span>Matrix</span>
+        </a>
+        <a href="mailto:root@squircle.computer" class="link-item">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>Mail</span>
+        </a>
+        <a href="https://github.com/SquircleUnderscore" class="link-item" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <span>GitHub</span>
+        </a>
     </div>
-		
-    
-    <div class="right">
-			<div class="profile">
-				<div class="avatar"></div>
-        <iframe src="https://free.timeanddate.com/clock/i9sz92qt/n195/fn8/pl35/pr20/tt0/tw0/tm1/ts1/tb4" frameborder="0" width="141" height="33"></iframe>
 
-
-				<p><b>name:</b> squircle <br>
-				  <b>age:</b> <span id="age"></span><br>
-          <b>languages: </b> fr, en<br>
-          <b>pronouns:</b> any<br>
-          <b>location:</b> europe, paris<br>
-          <b>timezone:</b> GMT+1<br>
-        </p>
-        <p style="font-size: 15px; text-align: center; margin-bottom: 6px;">
-          Welcome at board visitor number:
-        </p>
-        
-        <div id="counter-wrapper" style="width: 100%; display: flex; justify-content: center; align-items: center;">
-          <script type="text/javascript" src="https://counter.websiteout.com/js/24/0/0/1"></script>
-        </div>
-        <p style="font-size: 15px; text-align: center; margin-bottom: 6px;">
-          status:
-        </p>
-        <div id="statuscafe" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-          <div id="statuscafe-username"></div>
-          <div id="statuscafe-content"></div>
-        </div>
-        
-        <script src="https://status.cafe/current-status.js?name=squircle" defer></script>
-        <span style="display: block; height: 10px;"></span>
-
-
-
-        <div id="slideshow" style="text-align: center;">
-          <img src="/cat/qb9pYzX.png" class="active" style="text-align: center;">
-          <img src="/cat/d7mJF4W.png" style="text-align: center;">
-          <img src="/cat/7FieAqK.png" style="text-align: center;">
-          <img src="/cat/ExZ9JCk.png" style="text-align: center;">
-          <img src="/cat/jgeciGJ.png" style="text-align: center;">
-          <img src="/cat/vfvF2Nu.png" style="text-align: center;">
-        </div>
-
-        <br><br>
-      </div>
-      <br>
-			<div class="likes">
-				<iframe width="190" height="190" style="border:none" src="https://dimden.neocities.org/navlink/" name="neolink"></iframe>
-            
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-  <img id="hover-image" src="https://files.catbox.moe/hy7or1.png" style="position: fixed; bottom: 0; left: 1100px; width: 400px; height: auto; z-index: 999;">
-
-<div style="position: relative;">
-  <img  src="https://files.catbox.moe/lzvbn5.png" style="position: absolute; top: -972px; right: 380px; width: 100px; height: auto; z-index: 1000;" ></img>
-</div>
-
-
-
-
-<div style="position: relative;">
-  <img src="https://files.catbox.moe/kv4dtv.webp"  class="floating" style="position: absolute; top: -900px; right: 800px; width: 100px; height: auto; z-index: 1000;" ></img>
-</div>
-
-
-    <object id="melonland-surf-club" data="https://melonland.net/surf-badge.svg?fill=#ff00c5" type="image/svg+xml" style="width: 100px; height: 100px;"></object>
-
-
-
-<div id="server-status" class="offline">
-  <span><span class="label">Temp:</span><span id="status-temp">...</span></span>
-  <span><span class="label">CPU:</span><span id="status-cpu">...</span></span>
-  <span><span class="label">RAM:</span><span id="status-ram">...</span></span>
-  <span><span class="label">Update:</span><span id="status-ping">...</span></span>
-</div>
-
-
-<div class="win7" style="position: fixed; 
-            top: 15%;  
-            left: 32px;
-            z-index: 1000;">
-<div class="window active" style="max-width: 300px">
-  <div class="title-bar">
-    <div class="title-bar-text">.ONION</div>
-    <div class="title-bar-controls">
-      <button aria-label="Minimize"></button>
-      <button aria-label="Maximize"></button>
-      <button aria-label="Close"></button>
-    </div>
-  </div>
-  <div class="window-body has-space">
-  <p>Available via the Tor protocol <a href="http://squirclea6fbwc2ovownfqqtsuzhktjggggmcoo6mw2a7vsh3epxe6yd.onion/">⤻</a>.</p>
-             <section style="display: flex; justify-content: flex-end; gap: 6px">
-      <button onclick="window.open('http://squirclea6fbwc2ovownfqqtsuzhktjggggmcoo6mw2a7vsh3epxe6yd.onion/')">Open</button>
-    </section>
-  </div>
-</div>
-
-
-<div id="background"></div>
-
-
-</div>
-<video id="bg-video" loop>
-  <source src="/touhou.mp4" type="video/mp4">
-</video>
-<div id="content">
-
-<div class="pop" style="text-align: center; margin: 0 auto; font-family: sans-serif; font-size: 15px; font-weight: bold; color: #FF00C5; margin-top: 18px;">↑ ↑ ↓ ↓ ← → ← → b a</div>
-
-
-
-</div>
-
-
-<script src="./oneko.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
-
-
-
-	<script type="text/javascript">
-		function Marquee(selector, speed) {
-			const parentSelector = document.querySelector(selector);
-			const clone = parentSelector.innerHTML;
-			const firstElement = parentSelector.children[0];
-			let i = 0;
-			console.log(firstElement);
-			parentSelector.insertAdjacentHTML('beforeend', clone);
-			parentSelector.insertAdjacentHTML('beforeend', clone);
-
-			setInterval(function () {
-				firstElement.style.marginLeft = `-${i}px`;
-				if (i > firstElement.clientWidth) {
-					i = 0;
-				}
-				i = i + speed;
-			}, 0);
-		}
-
-	//after window is completed load
-	//1 class selector for marquee
-	//2 marquee speed 0.2
-	windoscriptventListener('load', Marquee('.marquee', 0.4))
-
-</script>
-<br>
-
-<div id="wcb" class="carbonbadge"></div>
-<script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
-
-<script src="fslightbox.js"></script>
-
-<script>
-    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
-
-    const USERNAME = "polosteor"; // Put your LastFM username here
-    const BASE_URL = `https://lastfm-last-played.biancarosa.com.br/${USERNAME}/latest-song`;
-
-    const getTrack = async () => {
-        const request = await fetch(BASE_URL);
-        const json = await request.json();
-
-        let isPlaying = json.track['@attr']?.nowplaying || false;
-        let titleWidget = document.querySelector(".titlewidget");
-        let contentBox = document.querySelector(".content");
-
-        // always show the box
-        contentBox.style.display = "block";
-
-        // change the title with the appropriate GIF
-        if (isPlaying) {
-            titleWidget.innerHTML = `
-                Now Listening to
-                <img src="https://files.catbox.moe/qvamiy.gif">:
-            `;
-        } else {
-            titleWidget.innerHTML = `
-                Last song played
-                <img src="https://files.catbox.moe/m5dg8b.gif">:
-            `;
-        }
-
-        // update the content
-        document.getElementById("listening").innerHTML = `
-            <a href="${json.track.url}" target="_blank" rel="noopener noreferrer">
-                <img src="${json.track.image[3]['#text']}">
-            </a>
-            <div id="trackInfo">
-                <p id="artistName">${json.track.artist['#text']}</p>
-                <h3 id="trackName">${json.track.name}</h3>
-            </div>
-        `;
-    };
-
-    getTrack();
-    setInterval(() => { getTrack(); }, 10000);
-</script>
-
-
-<script>
-  function copyEmbed() {
-    const input = document.getElementById("embedCode");
-    input.select();
-    input.setSelectionRange(0, 99999); // Mobile support
-    document.execCommand("copy");
-    alert("button code copied!");
-  }
-</script>
-
-<script>
-function copyEmbed2() {
-  const code = `<a href="https://squircle.computer"><img src="https://squircle.computer/button2.gif" alt="SquircleComputer"></a>`;
-  
-  // Crée un élément temporaire pour copier le texte
-  const tempInput = document.createElement("textarea");
-  tempInput.value = code;
-  document.body.appendChild(tempInput);
-  tempInput.select();
-  document.execCommand("copy");
-  document.body.removeChild(tempInput);
-
-  // Affiche l'alerte
-  alert("Secret button copied!");
-}
-
-</script>
-
-<script src="https://cdn.rawgit.com/MachinisteWeb/konami-code-js/master/src/konami-code.js"></script>
-
-
-<script>
-  const bg = document.getElementById('background');
-  const video = document.getElementById('bg-video');
-  const info = document.getElementById('info');
-  const content = document.getElementById('content');
-
-  new KonamiCode(function () {
-    bg.style.display = 'none';
-    video.style.display = 'block';
-    video.play();
-    content.classList.add('transparent');
-    info.innerText = "🎶 Bad Apple!! activé avec transparence !";
-    
-  });
-</script>
-
-<script>
-  const images = document.querySelectorAll('#slideshow img');
-  let current = 0;
-
-  setInterval(() => {
-    images[current].classList.remove('active');
-    current = (current + 1) % images.length;
-    images[current].classList.add('active');
-  }, 3000); // 3000 ms = 3 secondes
-</script>
-
-
-<script>
-const steps = 25; // nombre d'étapes dans l'animation
-const maxTranslate = 300;
-const maxRotate = 360;
-const minScale = 0.4;
-const maxScale = 2.2;
-
-let keyframes = `@keyframes teleport-chaos {\n`;
-
-for (let i = 0; i <= steps; i++) {
-  const pct = Math.round((i / steps) * 100);
-  const x = Math.floor(Math.random() * (2 * maxTranslate) - maxTranslate);
-  const y = Math.floor(Math.random() * (2 * maxTranslate) - maxTranslate);
-  const rot = Math.floor(Math.random() * (2 * maxRotate) - maxRotate);
-  const scale = (Math.random() * (maxScale - minScale) + minScale).toFixed(2);
-  const opacity = Math.random() > 0.5 ? 0 : 1;
-
-  keyframes += `  ${pct}% { transform: translate(${x}px, ${y}px) rotate(${rot}deg) scale(${scale}); opacity: ${opacity}; }\n`;
-}
-
-keyframes += `}`;
-
-document.getElementById("teleport-style").textContent = keyframes;
-</script>
-<style id="teleport-style"></style>
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    function updateAgeInSeconds() {
-        // Date de naissance : 21 mai 2009 à 00:00 heure locale en France (heure d'été, UTC+2)
-        var birthDate = new Date('2009-05-21T00:00:00+02:00');
-        var currentDate = new Date();
-
-        // Calcul de la différence en secondes (avec décimales)
-        var diffInSeconds = (currentDate - birthDate) / 1000;
-
-        // Formatage avec 2 chiffres après la virgule, virgule française
-        var formatted = diffInSeconds.toLocaleString('fr-FR', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
-
-        // Affichage
-        document.getElementById('age').textContent = formatted + "s";
-    }
-
-    updateAgeInSeconds();
-    setInterval(updateAgeInSeconds, 10); 
-</script>
-
-  <script>
-    const toggleBtn = document.getElementById('open-btn');
-    const sideWindow = document.getElementById('side-window');
-    
-    function updateArrow() {
-      const isOpen = sideWindow.classList.contains('open');
-      toggleBtn.textContent = isOpen ? '❮' : '❯';
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      sideWindow.classList.toggle('open');
-      updateArrow();
-    });
-
-    // Initial update in case class is preset
-    updateArrow();
-  </script>
-
-
-<script>
-  function loadImages() {
-    const urls = [
-      "https://files.catbox.moe/mvu638.webp",
-      "https://files.catbox.moe/trfufv.webp",
-      "https://files.catbox.moe/5fyc69.gif",
-      "https://files.catbox.moe/nsj31l.png",
-      "https://files.catbox.moe/1aqwqr.gif",
-      "https://files.catbox.moe/oivw5v.webp",
-      "https://files.catbox.moe/4yvi00.webp",
-      "https://files.catbox.moe/fwsvfa.jpg",
-      "https://files.catbox.moe/p68a3c.gif",
-      "https://files.catbox.moe/7s08jd.webp",
-      "https://files.catbox.moe/drekp6.gif",
-      "https://files.catbox.moe/0sc2pe.gif",
-      "https://files.catbox.moe/pyl290.webp",
-      "https://files.catbox.moe/qc8yjq.png",
-      "https://files.catbox.moe/o7qf7b.webp",
-      "https://files.catbox.moe/hvl579.gif",
-      "https://files.catbox.moe/hyzxja.webp",
-      "https://files.catbox.moe/b3ox7y.png",
-      "https://files.catbox.moe/cujc6q.png",
-      "https://files.catbox.moe/xz5b44.png",
-      "https://files.catbox.moe/e3z9z9.gif",
-      "https://files.catbox.moe/8q8e88.gif",
-      "https://files.catbox.moe/kkrkkx.webp",
-      "https://files.catbox.moe/joplau.png",
-      "https://files.catbox.moe/ttqlx4.png",
-      "https://files.catbox.moe/zdi0w7.png",
-      "https://files.catbox.moe/4tgosx.png",
-      "https://files.catbox.moe/v7iufo.webp",
-      "https://files.catbox.moe/ujdjir.gif",
-      "https://files.catbox.moe/1ckfmr.webp",
-      "https://files.catbox.moe/9hd5hr.webp",
-      "https://files.catbox.moe/q3h0hm.webp",
-      "https://files.catbox.moe/th9xz7.webp",
-      "https://files.catbox.moe/9hxhju.jpg",
-      "https://files.catbox.moe/y1qe2o.webp",
-      "https://files.catbox.moe/rcmbmd.gifv",
-      "https://files.catbox.moe/2kkjz6.gif",
-      "https://files.catbox.moe/sfvu7a.gif",
-      "https://files.catbox.moe/5hzlga.webp",
-      "https://files.catbox.moe/v08im8.jpg",
-      "https://files.catbox.moe/bkuhk2.webp",
-      "https://files.catbox.moe/l328mb.gif",
-      "https://files.catbox.moe/zgtqo2.jpg",
-      "https://files.catbox.moe/3wil84.webp",
-      "https://files.catbox.moe/k1bjav.png",
-      "https://files.catbox.moe/20csix.png",
-      "https://files.catbox.moe/wo84z6.webp",
-      "https://files.catbox.moe/3boloc.png",
-      "https://files.catbox.moe/y72wd9.png",
-      "https://files.catbox.moe/ezbesd.gif",
-      "https://files.catbox.moe/9cdoqy.webp",
-      "https://files.catbox.moe/tvsgkx.png",
-      "https://files.catbox.moe/y5ytl1.gif",
-      "https://files.catbox.moe/3wkeuz.webp",
-      "https://files.catbox.moe/ed2r1e.webp",
-      "https://files.catbox.moe/d88239.png",
-      "https://files.catbox.moe/hvtkvx.gif",
-      "https://files.catbox.moe/853dir.pnj",
-      "https://files.catbox.moe/7okk8s.pnj",
-      "https://files.catbox.moe/qtd0jl.png",
-      "https://files.catbox.moe/jtfnei.gif",
-      "https://files.catbox.moe/c8l7ns.png",
-      "https://files.catbox.moe/v07yau.webp",
-
-    ];
-
- const container = document.getElementById("image-container");
-    container.innerHTML = "";
-
-    let index = 0;
-
-    function loadNext() {
-      if (index >= urls.length) return;
-
-      const img = new Image();
-      img.src = urls[index];
-      img.style.maxWidth = "150px";
-      img.style.height = "auto";
-
-      img.onload = () => {
-        container.appendChild(img);
-        index++;
-        setTimeout(loadNext, 0); // 4 secondes après chargement
-      };
-
-      img.onerror = () => {
-        console.warn("Erreur de chargement : " + urls[index]);
-        index++;
-        setTimeout(loadNext, 0,500); // Continue même si erreur
-      };
-    }
-
-    loadNext();
-  }
-</script>
-
-<script>
-const url = "https://drive.squircle.computer/public/temp.json";
-
-
-
-function formatAgo(seconds) {
-  if (seconds < 60) return `${seconds}s ago`;
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m ago`;
-  const hours = Math.floor(minutes / 60);
-  return `${hours}h ago`;
-}
-
-function updateServerStatus() {
-  fetch(url)
-    .then(res => {
-      if (!res.ok) throw new Error("Fetch failed");
-      return res.json();
-    })
-    .then(data => {
-      const now = Math.floor(Date.now() / 1000);
-      const delay = now - data.time;
-
-      const temp = data.temp !== undefined ? `${data.temp}°C` : "-";
-      const cpu = data.cpu !== undefined ? `${data.cpu}%` : "-";
-      const ram = data.ram !== undefined ? `${data.ram}%` : "-";
-      const lastPing = formatAgo(delay);
-
-      const statusDiv = document.getElementById("server-status");
-      statusDiv.className = delay < 960 ? "online" : "offline";
-
-      document.getElementById("status-temp").textContent = temp;
-      document.getElementById("status-cpu").textContent = cpu;
-      document.getElementById("status-ram").textContent = ram;
-      document.getElementById("status-ping").textContent = lastPing;
-    })
-    .catch(() => {
-      const statusDiv = document.getElementById("server-status");
-      statusDiv.className = "offline";
-
-      document.getElementById("status-temp").textContent = "Failed to fetch";
-      document.getElementById("status-cpu").textContent = "server offline";
-      document.getElementById("status-ram").textContent = "Failed to fetch";
-      document.getElementById("status-ping").textContent = "server offline";
-    });
-}
-
-updateServerStatus();
-setInterval(updateServerStatus, 30000);
-</script>
-
-
-
-
-<script>
-  function isMobile() {
-    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  }
-
-  function checkScreen() {
-    const tooSmall = window.innerWidth < 768; // seuil ajustable
-    const warning = document.getElementById('mobile-warning');
-    if (isMobile() || tooSmall) {
-      warning.style.display = 'flex';
-    } else {
-      warning.style.display = 'none';
-    }
-  }
-
-  window.addEventListener('resize', checkScreen);
-  window.addEventListener('DOMContentLoaded', checkScreen);
-</script>
-
-
-
-
-
-<script src="https://cursor-party.squircleunderscore.partykit.dev/cursors.js"></script>
-
-
-
-<div id="mobile-warning" style="display:none;">
-  <div id="mobile-warning-inner">
-    <p>Go to desktop, I didn't have time for mobile responsiveness, I have life.</p>
-  </div>
-</div>
-
+    <a href="old_index.html" class="btn-old-site">Old Website</a>
 </body>
 </html>
