@@ -139,10 +139,124 @@
                 font-size: 1rem;
             }
         }
+
+        
+        .slsk-popup {
+            position: fixed;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--ctp-base);
+            border: 2px solid var(--my-pink);
+            padding: 10px;
+            width: auto;
+            min-width: 280px;
+            max-width: 90%;
+            z-index: 1000;
+            text-align: left;
+            transition: top 0.5s ease-out;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-radius: 0;
+        }
+
+        .slsk-popup.show {
+            top: 20px;
+        }
+
+        .slsk-img {
+            width: 50px;
+            height: 50px;
+            background-color: var(--ctp-surface0);
+            border-radius: 0;
+            object-fit: cover;
+            border: 1px solid var(--my-pink);
+        }
+
+        .slsk-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .slsk-user-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slsk-username {
+            color: var(--my-pink);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .slsk-status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #a6e3a1; 
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .slsk-help-link {
+            font-size: 0.7rem;
+            color: var(--ctp-subtext0);
+            text-decoration: none;
+            margin-left: auto;
+            padding-left: 10px;
+            text-align: right;
+            max-width: 60px;
+            line-height: 1.2;
+        }
+        
+        .slsk-help-link:hover {
+            text-decoration: underline;
+            color: var(--ctp-text);
+        }
+
+        .slsk-details {
+            font-size: 0.8rem;
+            color: var(--ctp-subtext0);
+        }
+
+        .slsk-link {
+            font-size: 0.8rem;
+            color: var(--ctp-text);
+            text-decoration: none;
+            margin-top: 2px;
+        }
+        
+        .slsk-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
- <h1>Goodbye 😔</h1>
+    <div id="slskPopup" class="slsk-popup">
+        <img src="profile.jpeg" alt="Profile" class="slsk-img">
+        
+        <div class="slsk-info">
+            <div class="slsk-user-row">
+                <span class="slsk-username">squircle</span>
+                <span class="slsk-status-dot" title="Online"></span>
+            </div>
+            <div class="slsk-details">FLAC, CD RIPs, 24/7</div>
+            <a href="slsk://squircle" class="slsk-link">Add me on Soulseek ➜</a>
+        </div>
+        <a href="https://en.wikipedia.org/wiki/Soulseek" target="_blank" class="slsk-help-link">What is Soulseek?</a>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('slskPopup').classList.add('show');
+        }, 1000);
+    </script>
+
+    <h1>Goodbye 😔</h1>
 <p>
   V2 is under construction, big changes are coming.<br>
   You can still access the old website below. (Images may not load, thx Catbox.)
