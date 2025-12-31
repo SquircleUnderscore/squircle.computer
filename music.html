@@ -130,16 +130,16 @@ button,input,label,option,select,table,textarea,ul.tree-view{-webkit-font-smooth
  
 @font-face {
   font-family: "Pixelated MS Sans Serif";
-  src: url("https://files.catbox.moe/1za99g.woff") format("woff");
-  src: url("https://files.catbox.moe/8fwbkl.woff2") format("woff2");
+  src: url("assets/fonts/1za99g.woff") format("woff");
+  src: url("assets/fonts/8fwbkl.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
  
 @font-face {
   font-family: "Pixelated MS Sans Serif";
-  src: url("https://files.catbox.moe/z7csle.woff") format("woff");
-  src: url("https://files.catbox.moe/moqhx6.woff2") format("woff2");
+  src: url("assets/fonts/z7csle.woff") format("woff");
+  src: url("assets/fonts/moqhx6.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
 }
@@ -275,7 +275,7 @@ input[type=range] {
     .songtitlearrow {
         background-size:100%;
         background-repeat:no-repeat;
-        background-image:url(https://files.catbox.moe/f5e8np.png);
+        background-image:url(assets/images/f5e8np.png);
         height:21px;
         width:21px;
         position:relative;
@@ -333,7 +333,7 @@ input[type=range] {
 <div class="player">
 <div class="window">
   <div class="title-bar">
-    <div class="title-bar-text"><sub><img class="titlebaricon" src="https://files.catbox.moe/tg55zp.png" alt="cd player icon"></sub> DREAM player</div>
+    <div class="title-bar-text"><sub><img class="titlebaricon" src="assets/images/tg55zp.png" alt="cd player icon"></sub> DREAM player</div>
     <div class="title-bar-controls">
       <button aria-label="Minimize"></button>
       <button aria-label="Maximize"></button>
@@ -342,7 +342,7 @@ input[type=range] {
   </div>
   <div class="window-body">
     <div class="flex">
-<div id="imagestyle"><img class="ic" src="https://files.catbox.moe/9w17uu.jpg" alt="momo icon"></div>
+<div id="imagestyle"><img class="ic" src="assets/images/9w17uu.jpg" alt="momo icon"></div>
     <div id="musicplayer">
         <div class="songtitlewindow">
             <div class="flex"><marquee scrollamount="4" class="songtitle"></marquee><div class="songtitlearrow"></div></div>
@@ -359,13 +359,13 @@ input[type=range] {
         <table class="controls">
             <tr>
                 <td>
-                    <div class="prev-track" onclick="prevTrack()"><button><img src="https://files.catbox.moe/hhoh1h.png" class="controlimg"></button></div>
+                    <div class="prev-track" onclick="prevTrack()"><button><img src="assets/images/hhoh1h.png" class="controlimg"></button></div>
                 </td>
                 <td>
-                    <div class="playpause-track" onclick="playpauseTrack()" ><button><img src="https://files.catbox.moe/w93riq.png" class="controlimg"></button></div>
+                    <div class="playpause-track" onclick="playpauseTrack()" ><button><img src="assets/images/w93riq.png" class="controlimg"></button></div>
                 </td>
                 <td>
-                    <div class="next-track" onclick="nextTrack()"><button><img src="https://files.catbox.moe/p4q9gf.png" class="controlimg"></button></div>
+                    <div class="next-track" onclick="nextTrack()"><button><img src="assets/images/p4q9gf.png" class="controlimg"></button></div>
                 </td>
             </tr>
         </table>
@@ -405,7 +405,7 @@ input[type=range] {
         let track_list = [
             {
                 name:"❀.˚₊storyteller₊˚.❀_chapter189 - Novel",
-                path:"https://files.catbox.moe/202efy.mp3"
+                path:"assets/audio/202efy.mp3"
             },
             {
                 name:"Era Chimæra - Tailspun",
@@ -467,7 +467,7 @@ input[type=range] {
             isPlaying = true;
  
             // replace icon with the pause icon
-            playpause_btn.innerHTML = '<button><img src="https://files.catbox.moe/njer0s.png" class="controlimg"></i></button>';
+            playpause_btn.innerHTML = '<button><img src="assets/images/njer0s.png" class="controlimg"></i></button>';
         }
  
         // pauses track when pause button is pressed
@@ -476,7 +476,7 @@ input[type=range] {
             isPlaying = false;
  
             // replace icon with the play icon
-            playpause_btn.innerHTML = '<button><img src="https://files.catbox.moe/w93riq.png" class="controlimg"></button>';
+            playpause_btn.innerHTML = '<button><img src="assets/images/w93riq.png" class="controlimg"></button>';
         }
  
         // moves to the next track
